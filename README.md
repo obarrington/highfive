@@ -1,3 +1,19 @@
+INSTALL THE APP:
+Pull from the github repo: http://github.com/obarrington/highfive
+
+Download the expo app on you're phone.
+From your terminal, navigate to your directory, run npm start & scan the QR code from Expo.
+
+Its not working?
+try npm INSTALL
+or npm install create-react-native-app
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
