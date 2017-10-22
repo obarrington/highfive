@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, ScrollView  } from 'react-native';
-import Button from './src/Button';
-import Container from './src/Container';
+import Button from './Button';
+import Container from './Container';
 
 export default class Login extends Component {
 //  constructor() {
@@ -14,15 +14,12 @@ export default class Login extends Component {
   render() {
     return (
       <ScrollView style={styles.scroll}>
-      </ScrollView>
       <Container>
-    <Text styles={{label: styles.textLabel}}>Username or Email<Text/>
-      <TextInput
-        style={styles.textInput}
-        />
+    <Text styles={{label: styles.textLabel}}>Username or Email</Text>
+      <TextInput style={styles.textInput}/>
         </Container>
         <Container>
-    <Text styles={{label: styles.textLabel}>Password<Text/>
+    <Text styles={{label: styles.textLabel}}>Password</Text>
     <TextInput
         secureTextEntry={true}
         style={styles.textInput}
@@ -31,11 +28,13 @@ export default class Login extends Component {
       <View style={styles.footer}>
     <Container>
         <Button
-            label="Sign In"
+            label="Continue"
             styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
             onPress={this.press.bind(this)} />
     </Container>
     </View>
+      </ScrollView>
+
     );
   };
 }

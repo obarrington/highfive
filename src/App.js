@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View} from 'react-native';
-import Login from './src/Login';
+import Login from './Login';
 
 export default class App extends Component {
 //  constructor() {
@@ -9,7 +9,7 @@ export default class App extends Component {
   //}
   render() {
     return (
-    <Login />
+    <Login  style={styles.container}/>
     );
   }
 }
