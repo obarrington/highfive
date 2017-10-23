@@ -14,6 +14,8 @@ export default firebase;
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
+//TODO: Work on loading screen stuff
+
 function waitForIt(N) {
   return new Promise(function (resolve, reject) {
     setTimeout(() => resolve(), N);
