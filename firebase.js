@@ -60,7 +60,7 @@ function genPrompt(type) {
       var word = "";
       for (var i = 0; i<order.length; i++) {
         word = ""
-        if (order[i] == 0) {
+        if (order[i] == "*") {
           selectWord(base, order, "noun").then(word => {
             base = base.replace("*", word);
           });
