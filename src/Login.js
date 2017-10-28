@@ -2,16 +2,24 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, ScrollView  } from 'react-native';
 import Button from './Button';
 import Container from './Container';
+import  ScreenSelection  from './ScreenSelection';
+import { StackNavigator } from 'react-navigation';
+
+/*const SimpleApp = StackNavigator({
+  Selection: { screen: ScreenSelection },
+});*/
+
 
 export default class Login extends Component {
 //  constructor() {
   //  super(props);
   //  this.state = { text: 'username'};
   //}
-  press(){
 
-  }
+
+
   render() {
+    //const { navigate } = this.props.navigation.navigate;
     return (
       <ScrollView style={styles.scroll}>
       <Container>
@@ -30,7 +38,8 @@ export default class Login extends Component {
         <Button
             label="Continue"
             styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
-            onPress={this.press.bind(this)} />
+             //onPress={() => navigate('Selection', { user: 'Congrats!' })}
+              />
     </Container>
     </View>
       </ScrollView>

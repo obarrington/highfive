@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import Login from './Login';
+import ScreenSelection from './ScreenSelection'
+
+
+
 
 export default class App extends Component {
 //  constructor() {
@@ -9,7 +13,8 @@ export default class App extends Component {
   //}
   render() {
     return (
-    <Login  style={styles.container}/>
+      //<Login style={styles.container}/>
+      <ScreenSelection/>
     );
   }
 }
