@@ -3,6 +3,7 @@ import { StyleSheet, Text, View} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
+import App from './App';
 
 
 export default class ScreenSelection extends Component {
@@ -10,31 +11,31 @@ export default class ScreenSelection extends Component {
     super(props);
     this.state = {};
 
-    this.onButtonPress=this.onButtonPress.bind(this);
+    //this.onDrawPress=this.onDrawPress.bind(this);
+    //this.onWritePress=this.onWritePress.bind(this)
   }
 
-  onButtonePress(navLabel) {
-      const { navigate } = this.props.navigation;
-      navigate({navLabel});
-  };
+//  onDrawPress() {
+    //  const { navigate } = this.props.navigation;
+
+    //  navigate('Draw');
+//  };
+  //onWritePress() {
+    //  const { navigate } = this.props.navigation;
+
+      //navigate('Write');
+  //};
 
 
   render() {
     return (
     <View style={{flex: 1}}>
       <View style={styles.writeContainer}>
-      <Button
-        label="Write"
-        style={{label: styles.label, button: styles.primaryButton}}
-        onPress={() => this.onPress('WriteScreen')}
-      />
+      <Text style={styles.label}>Write</Text>
       </View>
       <View style={styles.drawContainer}>
-      <Button
-      label="Draw"
-      styles={{label: styles.label, button: styles.primaryButton}}
-      onPress={() => this.onButtonPress('DrawScreen')}
-      />
+      <Text style={styles.label}>Draw</Text>
+
       </View>
     </View>
   );

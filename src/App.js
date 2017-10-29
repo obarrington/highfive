@@ -7,7 +7,7 @@ import { StackNavigator } from 'react-navigation';
 export const BasicApp = StackNavigator({
   Main: {screen: Login},
   Selection: {screen: ScreenSelection},
-//  Write: {screen: WriteScreen},
+ // Write: {screen: WriteScreen},
 //  Draw: {screen: DrawScreen},
 });
 export default class App extends Component {
