@@ -24,15 +24,17 @@ export default class ScreenSelection extends Component {
     <View style={{flex: 1}}>
       <View style={styles.writeContainer}>
       <Button
-        style={styles.label}
-        onPress={() => this.onPress('Draw')}
-        >Write</Button>
+        label="Write"
+        style={{label: styles.label, button: styles.primaryButton}}
+        onPress={() => this.onPress('WriteScreen')}
+      />
       </View>
       <View style={styles.drawContainer}>
       <Button
-      style={styles.label}
-      onPress={() => this.onButtonPress('Write')}
-      >Draw</Buttont>
+      label="Draw"
+      styles={{label: styles.label, button: styles.primaryButton}}
+      onPress={() => this.onButtonPress('DrawScreen')}
+      />
       </View>
     </View>
   );
@@ -57,5 +59,8 @@ export default class ScreenSelection extends Component {
       fontWeight: 'bold',
       fontFamily: 'Verdana',
       color: '#fff',
+    },
+    primaryButton: {
+      backroundColor: 'transparent',
     },
 });
