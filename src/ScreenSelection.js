@@ -6,18 +6,33 @@ import Button from './Button';
 
 
 export default class ScreenSelection extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+
+    this.onButtonPress=this.onButtonPress.bind(this);
+  }
+
+  onButtonePress(navLabel) {
+      const { navigate } = this.props.navigation;
+      navigate({navLabel});
+  };
+
 
   render() {
     return (
     <View style={{flex: 1}}>
       <View style={styles.writeContainer}>
-      <Text
+      <Button
         style={styles.label}
-        onPress={this.onTextPress}
-        >Write</Text>
+        onPress={() => this.onPress('Draw')}
+        >Write</Button>
       </View>
       <View style={styles.drawContainer}>
-      <Text style={styles.label}>Draw</Text>
+      <Button
+      style={styles.label}
+      onPress={() => this.onButtonPress('Write')}
+      >Draw</Buttont>
       </View>
     </View>
   );
