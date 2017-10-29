@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View} from 'react-native';
-//import { StackNavigator } from 'react-navigation';
+import { StackNavigator } from 'react-navigation';
 import Container from './Container';
+import Button from './Button';
+
 
 export default class ScreenSelection extends Component {
 
@@ -9,7 +11,10 @@ export default class ScreenSelection extends Component {
     return (
     <View style={{flex: 1}}>
       <View style={styles.writeContainer}>
-      <Text style={styles.label}>Write</Text>
+      <Text
+        style={styles.label}
+        onPress={this.onTextPress}
+        >Write</Text>
       </View>
       <View style={styles.drawContainer}>
       <Text style={styles.label}>Draw</Text>

@@ -4,22 +4,26 @@ import Button from './Button';
 import Container from './Container';
 import  ScreenSelection  from './ScreenSelection';
 import { StackNavigator } from 'react-navigation';
-
+import App from './App';
 /*const SimpleApp = StackNavigator({
   Selection: { screen: ScreenSelection },
 });*/
 
 
 export default class Login extends Component {
-//  constructor() {
-  //  super(props);
-  //  this.state = { text: 'username'};
-  //}
+  constructor(props) {
+    super(props);
+    this.state = {};
 
+    this.onButtonPress=this.onButtonPress.bind(this);
+  }
 
+  onButtonPress() {
+      const { navigate } = this.props.navigation;
+      navigate('Selection');
+  };
 
   render() {
-    //const { navigate } = this.props.navigation.navigate;
     return (
       <ScrollView style={styles.scroll}>
       <Container>
@@ -38,7 +42,9 @@ export default class Login extends Component {
         <Button
             label="Continue"
             styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
-             //onPress={() => navigate('Selection', { user: 'Congrats!' })}
+            onPress={this.onButtonPress}
+
+
               />
     </Container>
     </View>
