@@ -1,23 +1,80 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import { StyleSheet, Text, View} from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import Container from './Container';
+import Button from './Button';
 
-export default class App extends React.Component {
+export default class ScreenSelection extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+
+    this.onButtonPress=this.onButtonPress.bind(this);
+  }
+
+  onButtonePress(navLabel) {
+      const { navigate } = this.props.navigation;
+      navigate({navLabel});
+  };
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+    <View style={{flex: 1}}>
+      <View style={styles.writeContainer}>
+      <Button
+        label="Continue Drawing"
+        style={{label: styles.label, button: styles.primaryButton}}
+        onPress={() => this.onPress('WriteScreen')}
+      />
       </View>
-    );
-  }
-}
+      <View style={styles.drawContainer}>
+      <Button
+      label="Choose Another Item"
+      styles={{label: styles.label, button: styles.primaryButton}}
+      onPress={() => this.onButtonPress('MenuItem')}
+      />
+      </View>
+      </View>
+      <View style={styles.drawContainer}>
+      <Button
+      label="Keep Going"
+      styles={{label: styles.label, button: styles.primaryButton}}
+      onPress={() => this.onButtonPress('DrawScreen')}
+      />
+      </View>
+      </View>
+      <View style={styles.drawContainer}>
+      <Button
+      label="Keep Going"
+      styles={{label: styles.label, button: styles.primaryButton}}
+      onPress={() => this.onButtonPress('DrawScreen')}
+      />
+      </View>
+    </View>
+  );
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+};
+}
+  const styles = StyleSheet.create({
+    writeContainer: {
+      flex: 1,
+      backgroundColor: '#75c68b',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    drawContainer: {
+      flex: 1,
+      backgroundColor: '#34A853',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    label: {
+      fontSize: 50,
+      fontWeight: 'bold',
+      fontFamily: 'Verdana',
+      color: '#fff',
+    },
+    primaryButton: {
+      backroundColor: 'transparent',
+    },
 });
