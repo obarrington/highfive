@@ -66,6 +66,6 @@ export default class ScreenSelection extends Component {
       color: '#fff',
     },
     primaryButton: {
-      backroundColor: 'transparent',
+      backgroundColor: 'transparent',
     },
 });
