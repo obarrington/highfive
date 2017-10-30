@@ -27,11 +27,11 @@ export default class Login extends Component {
     return (
       <ScrollView style={styles.scroll}>
       <Container>
-    <Text style={{label: styles.textLabel}}>Username or Email</Text>
+    <Text style={styles.textLabel}>Username or Email</Text>
       <TextInput style={styles.textInput}/>
         </Container>
         <Container>
-    <Text style={{label: styles.textLabel}}>Password</Text>
+    <Text style={styles.textLabel}>Password</Text>
     <TextInput
         secureTextEntry={true}
         style={styles.textInput}
