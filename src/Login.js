@@ -43,9 +43,7 @@ export default class Login extends Component {
             label="Continue"
             styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
             onPress={this.onButtonPress}
-
-
-              />
+  />
     </Container>
     </View>
       </ScrollView>

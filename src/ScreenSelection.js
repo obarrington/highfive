@@ -11,30 +11,34 @@ export default class ScreenSelection extends Component {
     super(props);
     this.state = {};
 
-    //this.onDrawPress=this.onDrawPress.bind(this);
-    //this.onWritePress=this.onWritePress.bind(this)
+
+    this.onButtonPress=this.onButtonPress.bind(this)
   }
 
-//  onDrawPress() {
-    //  const { navigate } = this.props.navigation;
+  onButtonPress() {
+      const { navigate } = this.props.navigation;
 
-    //  navigate('Draw');
-//  };
-  //onWritePress() {
-    //  const { navigate } = this.props.navigation;
+      navigate('Prompt');
+  };
 
-      //navigate('Write');
-  //};
 
 
   render() {
     return (
     <View style={{flex: 1}}>
       <View style={styles.writeContainer}>
-      <Text style={styles.label}>Write</Text>
+      <Button
+        label="Write"
+        styles={{button: styles.primaryButton, label:styles.label}}
+        onPress={this.onButtonPress}
+        />
       </View>
       <View style={styles.drawContainer}>
-      <Text style={styles.label}>Draw</Text>
+      <Button
+        label="Draw"
+        styles={{button: styles.primaryButton, label:styles.label}}
+        onPress={this.onButtonPress}
+        />
 
       </View>
     </View>
