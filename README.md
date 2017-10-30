@@ -1,7 +1,7 @@
 INSTALL THE APP:
 Pull from the github repo: http://github.com/obarrington/highfive
 
-Download the expo app on you're phone.
+Download the expo app on your phone.
 From your terminal, navigate to your directory, run npm start & scan the QR code from Expo.
 
 Its not working?
