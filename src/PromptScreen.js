@@ -6,29 +6,62 @@ import Button from './Button';
 import App from './App';
 import ScreenSelection from './ScreenSelection'
 
+const database = require('./database');
+
+var exercisePrompt = "";
 
 export default class PromptScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-
-
-  //  this.onButtonPress=this.onButtonPress.bind(this)
+    this.state = {
+      prompt: "loading..."
+    };
+    this.promptType = this.props.navigation.state.params.type;
   }
 
-//  onButtonPress() {
-    //  const { navigate } = this.props.navigation;
-
-    //  navigate('PromptScreen');
-//  };
-
-
+  componentWillMount() {
+    if(this.promptType == "draw") {
+      this.setState({style: styles.drawContainer});
+    }
+    else {
+      this.setState({style: styles.writeContainer})
+    }
+    database.getMeAPrompt(this.promptType).then(p => {
+      exercisePrompt = p;
+      this.setState({ prompt: exercisePrompt });
+    });
+  }
 
   render() {
     return (
-      <Text>We did it!</Text>
+      <View style={{flex: 1}}>
+        <View style={this.state.style}>
+        <Text style={styles.label}>{this.state.prompt}</Text>
+        </View>
+      </View>
     );
   };
 }
 const styles = StyleSheet.create({
-  });
+  writeContainer: {
+    flex: 1,
+    backgroundColor: '#75c68b',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  drawContainer: {
+    flex: 1,
+    backgroundColor: '#34A853',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  label: {
+    fontSize: 50,
+    fontWeight: 'bold',
+    fontFamily: 'Verdana',
+    color: '#fff',
+  },
+  primaryButton: {
+    backgroundColor: 'transparent',
+  },
+});
