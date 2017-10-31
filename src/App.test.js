@@ -1,5 +1,7 @@
 import React from 'react';
 import App from './App';
+import ScreenSelection from './ScreenSelection';
+import { StackNavigator } from 'react-navigation';
 
 import renderer from 'react-test-renderer';
 
