@@ -12,14 +12,22 @@ export default class ScreenSelection extends Component {
     this.state = {};
 
 
-    this.onButtonPress=this.onButtonPress.bind(this)
+    this.write=this.write.bind(this);
+    this.draw=this.draw.bind(this);
   }
 
-  onButtonPress() {
+  write() {
       const { navigate } = this.props.navigation;
 
-      navigate('Prompt');
+      navigate('Prompt', {type: "write"});
   };
+
+  draw() {
+      const { navigate } = this.props.navigation;
+
+      navigate('Prompt', {type: "draw"});
+  };
+
 
 
 
@@ -30,14 +38,14 @@ export default class ScreenSelection extends Component {
       <Button
         label="Write"
         styles={{button: styles.primaryButton, label:styles.label}}
-        onPress={this.onButtonPress}
+        onPress={this.write}
         />
       </View>
       <View style={styles.drawContainer}>
       <Button
         label="Draw"
         styles={{button: styles.primaryButton, label:styles.label}}
-        onPress={this.onButtonPress}
+        onPress={this.draw}
         />
 
       </View>
@@ -62,7 +70,7 @@ export default class ScreenSelection extends Component {
     label: {
       fontSize: 50,
       fontWeight: 'bold',
-      //fontFamily: 'Verdana',
+      fontFamily: 'Verdana',
       color: '#fff',
     },
     primaryButton: {
