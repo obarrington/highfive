@@ -17,7 +17,14 @@ export default class PromptScreen extends Component {
       prompt: "loading..."
     };
     this.promptType = this.props.navigation.state.params.type;
+    this.nextScreen=this.nextScreen.bind(this);
   }
+
+  nextScreen() {
+    const { navigate } = this.props.navigation;
+    navigate(this.promptType);
+  };
+
 
   componentWillMount() {
     if(this.promptType == "draw") {
@@ -29,8 +36,10 @@ export default class PromptScreen extends Component {
     database.getMeAPrompt(this.promptType).then(p => {
       exercisePrompt = p;
       this.setState({ prompt: exercisePrompt });
+      setTimeout(this.nextScreen, 6500);
     });
   }
+
 
   render() {
     return (
