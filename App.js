@@ -9,6 +9,8 @@ export const BasicApp = StackNavigator({
   Main: {screen: Login},
   Selection: {screen: ScreenSelection},
   Prompt: {screen: PromptScreen},
+  Draw: {screen: Draw},
+  Write: {screen: Write},
 });
 export default class App extends Component {
 
