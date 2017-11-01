@@ -62,7 +62,7 @@ export default class ScreenSelection extends Component {
     label: {
       fontSize: 50,
       fontWeight: 'bold',
-      //fontFamily: 'Verdana',
+      fontFamily: 'Verdana',
       color: '#fff',
     },
     primaryButton: {
