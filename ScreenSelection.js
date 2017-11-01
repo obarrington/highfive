@@ -28,15 +28,15 @@ export default class ScreenSelection extends Component {
     <View style={{flex: 1}}>
       <View style={styles.writeContainer}>
       <Button
-        label="Write"
-        styles={{button: styles.primaryButton, label:styles.label}}
+        label="Write",
+        styles={{button: styles.primaryButton, label:styles.label}},
         onPress={this.onButtonPress}
         />
       </View>
       <View style={styles.drawContainer}>
       <Button
-        label="Draw"
-        styles={{button: styles.primaryButton, label:styles.label}}
+        label="Draw",
+        styles={{button: styles.primaryButton, label:styles.label}},
         onPress={this.onButtonPress}
         />
 

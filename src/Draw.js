@@ -4,9 +4,9 @@ import { StackNavigator } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
 import App from './App';
+//import PromptScreen from'./PromptScreen'
 
-
-export default class ScreenSelection extends Component {
+export default class Draw extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -18,7 +18,7 @@ export default class ScreenSelection extends Component {
   onButtonPress() {
       const { navigate } = this.props.navigation;
 
-      navigate('Prompt');
+      navigate('ScreenSelection');
   };
 
 
@@ -26,16 +26,10 @@ export default class ScreenSelection extends Component {
   render() {
     return (
     <View style={{flex: 1}}>
-      <View style={styles.writeContainer}>
-      <Button
-        label="Write"
-        styles={{button: styles.primaryButton, label:styles.label}}
-        onPress={this.onButtonPress}
-        />
-      </View>
       <View style={styles.drawContainer}>
+        <Text>"This is going to be the draw screen"</Text>
       <Button
-        label="Draw"
+        label="ScreenSelection"
         styles={{button: styles.primaryButton, label:styles.label}}
         onPress={this.onButtonPress}
         />
@@ -47,12 +41,6 @@ export default class ScreenSelection extends Component {
 };
 }
   const styles = StyleSheet.create({
-    writeContainer: {
-      flex: 1,
-      backgroundColor: '#75c68b',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
     drawContainer: {
       flex: 1,
       backgroundColor: '#34A853',

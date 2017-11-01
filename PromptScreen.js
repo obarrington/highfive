@@ -4,7 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
 import App from './App';
-import ScreenSelection from './ScreenSelection'
+//import ScreenSelection from './ScreenSelection'
 
 
 export default class PromptScreen extends Component {
@@ -29,9 +29,10 @@ export default class PromptScreen extends Component {
       <View style={{flex: 1}}>
         <Text>We did it!</Text>
         <View style={styles.drawContainer}>
+        
       <Button
-        label="Draw"
-        styles={{button: styles.primaryButton, label:styles.label}}
+        label="Draw",
+        styles={{button: styles.primaryButton, label:styles.label}},
         onPress={this.onButtonPress}
         />
         </View>

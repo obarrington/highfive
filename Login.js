@@ -40,8 +40,8 @@ export default class Login extends Component {
       <View style={styles.footer}>
     <Container>
         <Button
-            label="Continue",
-            styles={{button: styles.primaryButton, label: styles.buttonWhiteText}},
+            label="Continue"
+            styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
             onPress={this.onButtonPress}
   />
     </Container>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   textLabel: {
         fontSize: 20,
         fontWeight: 'bold',
-        fontFamily: 'Verdana',
+        //fontFamily: 'Veranda',
         marginBottom: 10,
         color: '#595856'
     },
