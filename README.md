@@ -1,15 +1,16 @@
 INSTALL THE APP:
 Pull from the github repo: http://github.com/obarrington/highfive
 
-Download the expo app on your phone.
-From your terminal, navigate to your directory.
-To install:
+
+Things to install in the app directory in your terminal:
 npm install
 npm install create-react-native-app
 npm install react-navigation
 npm install firebase
 
-run npm start & scan the QR code from Expo.
+Download the expo app on your phone. Just search expo in the app/android store. 
+From your terminal, navigate to the location of the directory directory, run npm start & scan the QR code from your expo app on your phone.
+
 
 
 
