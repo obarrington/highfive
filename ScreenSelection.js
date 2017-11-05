@@ -18,7 +18,7 @@ export default class ScreenSelection extends Component {
   onButtonPress() {
       const { navigate } = this.props.navigation;
 
-      navigate('draw');
+      navigate('Prompt');
   };
 
 
