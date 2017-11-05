@@ -5,7 +5,7 @@ import Container from './Container';
 import Button from './Button';
 import App from './App';
 //This is straight from literallycanvas. should produce the basic canvas
-const React = require('react');
+//const React = require('react');
 const ReactDOM = require('react-dom');
 const LC = require('literallycanvas');
 
