@@ -15,7 +15,7 @@ export default class ScreenSelection extends Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        <Text>Draw screen Placeholder</Text>
+        <Text>Write screen Placeholder</Text>
       </View>
   );
 

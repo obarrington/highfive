@@ -6,7 +6,7 @@ import Button from './Button';
 import App from './App';
 
 
-export default class ScreenSelection extends Component {
+export default class EndScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -15,7 +15,7 @@ export default class ScreenSelection extends Component {
   render() {
     return (
       <View style={{flex: 1}}>
-        <Text>Write screen Placeholder</Text>
+        <Text>End screen Placeholder</Text>
       </View>
   );
 

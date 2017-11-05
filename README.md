@@ -7,6 +7,7 @@ npm install
 npm install create-react-native-app
 npm install react-navigation
 npm install firebase
+npm install literallycanvas
 
 Download the expo app on your phone. Just search expo in the app/android store. 
 From your terminal, navigate to the location of the directory directory, run npm start & scan the QR code from your expo app on your phone.
