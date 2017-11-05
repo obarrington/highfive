@@ -3,52 +3,43 @@ import { StyleSheet, Text, View} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
+import App from './App';
+
 
 export default class ScreenSelection extends Component {
   constructor(props) {
     super(props);
     this.state = {};
 
-    this.onButtonPress=this.onButtonPress.bind(this);
+
+    this.onButtonPress=this.onButtonPress.bind(this)
   }
 
-  onButtonePress(navLabel) {
+  onButtonPress() {
       const { navigate } = this.props.navigation;
-      navigate({navLabel});
+
+      navigate('Prompt');
   };
+
+
 
   render() {
     return (
     <View style={{flex: 1}}>
       <View style={styles.writeContainer}>
       <Button
-        label="Continue Drawing"
-        style={{label: styles.label, button: styles.primaryButton}}
-        onPress={() => this.onPress('WriteScreen')}
-      />
+        label="Write"
+        styles={{button: styles.primaryButton, label:styles.label}}
+        onPress={this.onButtonPress}
+        />
       </View>
       <View style={styles.drawContainer}>
       <Button
-      label="Choose Another Item"
-      styles={{label: styles.label, button: styles.primaryButton}}
-      onPress={() => this.onButtonPress('MenuItem')}
-      />
-      </View>
-      </View>
-      <View style={styles.drawContainer}>
-      <Button
-      label="Keep Going"
-      styles={{label: styles.label, button: styles.primaryButton}}
-      onPress={() => this.onButtonPress('DrawScreen')}
-      />
-      </View>
-      </View>
-      <View style={styles.drawContainer}>
-      <Button
-      label="Keep Going"
-      styles={{label: styles.label, button: styles.primaryButton}}
-      onPress={() => this.onButtonPress('DrawScreen')}
-      />
+        label="Draw"
+        styles={{button: styles.primaryButton, label:styles.label}}
+        onPress={this.onButtonPress}
+        />
+
       </View>
     </View>
   );
@@ -75,6 +66,6 @@ export default class ScreenSelection extends Component {
       color: '#fff',
     },
     primaryButton: {
-      backroundColor: 'transparent',
+      backgroundColor: 'transparent',
     },
 });
