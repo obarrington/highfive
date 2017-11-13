@@ -6,55 +6,71 @@ import Button from './Button';
 import App from './App';
 import ScreenSelection from './ScreenSelection'
 
+const database = require('./database');
+
+var exercisePrompt = "";
 
 export default class PromptScreen extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
-
-
-        this.onButtonPress=this.onButtonPress.bind(this)
+        this.state = {
+            prompt: "loading..."
+        };
+        this.promptType = this.props.navigation.state.params.type;
+        this.nextScreen=this.nextScreen.bind(this);
     }
 
-    onButtonPress() {
+    nextScreen() {
         const { navigate } = this.props.navigation;
-
-        navigate('Write');
+        navigate(this.promptType);
     };
 
+
+    componentWillMount() {
+        if(this.promptType == "draw") {
+            this.setState({style: styles.drawContainer});
+        }
+        else {
+            this.setState({style: styles.writeContainer})
+        }
+        database.getMeAPrompt(this.promptType).then(p => {
+            exercisePrompt = p;
+        this.setState({ prompt: exercisePrompt });
+        setTimeout(this.nextScreen, 6500);
+    });
+    }
 
 
     render() {
         return (
-
-            <View style={styles.backgroundColor}>
-                <Text>We did it!</Text>
-
-                    <Button
-                        label="Write"
-                        styles={{button: styles.primaryButton, label:styles.label}}
-                        onPress={this.onButtonPress}
-                    />
-            </View>
-        );
+            <View style={{flex: 1}}>
+    <View style={this.state.style}>
+    <Text style={styles.label}>{this.state.prompt}</Text>
+        </View>
+        </View>
+    );
     };
 }
 const styles = StyleSheet.create({
-    backgroundColor: {
+    writeContainer: {
         flex: 1,
         backgroundColor: '#75c68b',
         alignItems: 'center',
         justifyContent: 'center',
     },
-    primaryButton: {
-        backgroundColor: 'transparent',
-        height: 50,
-        width: 100,
+    drawContainer: {
+        flex: 1,
+        backgroundColor: '#34A853',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     label: {
         fontSize: 50,
         fontWeight: 'bold',
         fontFamily: 'Verdana',
         color: '#fff',
+    },
+    primaryButton: {
+        backgroundColor: 'transparent',
     },
 });

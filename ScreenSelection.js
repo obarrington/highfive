@@ -7,65 +7,73 @@ import App from './App';
 
 
 export default class ScreenSelection extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+    constructor(props) {
+        super(props);
+        this.state = {};
 
 
-    this.onButtonPress=this.onButtonPress.bind(this)
-  }
+        this.write=this.write.bind(this);
+        this.draw=this.draw.bind(this);
+    }
 
-  onButtonPress() {
-      const { navigate } = this.props.navigation;
+    write() {
+        const { navigate } = this.props.navigation;
 
-      navigate('Prompt');
-  };
+        navigate('Prompt', {type: "write"});
+    };
+
+    draw() {
+        const { navigate } = this.props.navigation;
+
+        navigate('Prompt', {type: "draw"});
+    };
 
 
 
-  render() {
-    return (
-    <View style={{flex: 1}}>
-      <View style={styles.writeContainer}>
-      <Button
+
+    render() {
+        return (
+            <View style={{flex: 1}}>
+    <View style={styles.writeContainer}>
+    <Button
         label="Write"
         styles={{button: styles.primaryButton, label:styles.label}}
-        onPress={this.onButtonPress}
-        />
-      </View>
-      <View style={styles.drawContainer}>
-      <Button
+        onPress={this.write}
+    />
+    </View>
+        <View style={styles.drawContainer}>
+    <Button
         label="Draw"
         styles={{button: styles.primaryButton, label:styles.label}}
-        onPress={this.onButtonPress}
-        />
+        onPress={this.draw}
+    />
 
-      </View>
     </View>
-  );
+        </View>
+    );
 
-};
+    };
 }
-  const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     writeContainer: {
-      flex: 1,
-      backgroundColor: '#75c68b',
-      alignItems: 'center',
-      justifyContent: 'center',
+        flex: 1,
+        backgroundColor: '#75c68b',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     drawContainer: {
-      flex: 1,
-      backgroundColor: '#34A853',
-      alignItems: 'center',
-      justifyContent: 'center',
+        flex: 1,
+        backgroundColor: '#34A853',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     label: {
-      fontSize: 50,
-      fontWeight: 'bold',
-      fontFamily: 'Verdana',
-      color: '#fff',
+        fontSize: 50,
+        fontWeight: 'bold',
+        fontFamily: 'Verdana',
+        color: '#fff',
     },
     primaryButton: {
-      backgroundColor: 'transparent',
+        backgroundColor: 'transparent',
     },
 });

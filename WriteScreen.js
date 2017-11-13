@@ -1,32 +1,42 @@
 /**
  * Created by JunjiJoo on 2017-10-31.
  */
-import React from 'react';
-import { AppRegistry, StyleSheet, Text, View, TextInput } from 'react-native';
+import React { Component } from 'react';
+import { AppRegistry, StyleSheet, Text, View, TextInput, Alert,
+    AppRegistry, Platform, StyleSheet, TouchableHighlight } from 'react-native';
 
 
 export default class Write extends React.Component {
+    _onPressButton(){
+        Alert.alert('Prompt Goes Here!')
+    }
     constructor(props){
         super(props);
-        this.state = {text: 'Write Answer to the Prompt',};
+        this.state = {text: 'Answer to the Prompt',};
     }
     render() {
         return (
+            //should be adited
             <View style={styles.container}>
                 <View style = {styles.containerA}>
                     <Text style = {styles.headline}>Prompt Goes Here</Text>
                 </View>
-                <View style = {styles.containerB}>
+                 <View style = {styles.containerB}>
                     <TextInput
                         style = {styles.textInput}
                         onChangeText = {(text) => this.setState({text})}
                         value = {this.state.text}
                     />
                 </View>
+            //button for viewing prompt for users when clicked
+                <TouchableHighlight onPress={this._onPressButton} underlayColor
+                    ="white">
+                    <View style={styles.button}>
+                        <Text style={styles.buttonText}>ClickForPrompt</Text>
+                    </View>
+                </TouchableHighlight>
             </View>
-
-
-        );
+    );
     }
 }
 
@@ -61,6 +71,16 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         backgroundColor: 'rgba(0,0,0,0)',
         color: 'black',
+    },
+    button: {
+        marginBottom:10,
+        width: 50,
+        alignItems: 'center',
+        backgroundColor: "#2196F3"
+    },
+    buttonText: {
+        padding: 20,
+        color: 'white'
     }
 
 
