@@ -1,11 +1,10 @@
-import React, {Component} from 'react';
-import { StyleSheet, Text, View} from 'react-native';
-import Login from './Login';
-import ScreenSelection from './ScreenSelection';
-import PromptScreen from './PromptScreen';
-import WriteScreen from './WriteScreen';
-import DrawScreen from './DrawScreen';
-
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, AppRegistry } from 'react-native';
+import Login from './src/Login';
+import ScreenSelection from './src/ScreenSelection';
+import PromptScreen from './src/PromptScreen';
+import WriteScreen from './src/WriteScreen';
+import DrawScreen from './src/DrawScreen';
 import { StackNavigator } from 'react-navigation';
 
 export const BasicApp = StackNavigator({
@@ -15,7 +14,8 @@ export const BasicApp = StackNavigator({
   draw: {screen: DrawScreen},
   write: {screen: WriteScreen}
 });
-export default class App extends Component {
+
+class App extends Component {
 
   render() {
     return (
@@ -32,3 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+AppRegistry.registerComponent('App', () => App)
+
+export default App

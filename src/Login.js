@@ -4,7 +4,7 @@ import Button from './Button';
 import Container from './Container';
 import  ScreenSelection  from './ScreenSelection';
 import { StackNavigator } from 'react-navigation';
-import App from './App';
+
 /*const SimpleApp = StackNavigator({
   Selection: { screen: ScreenSelection },
 });*/
