@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, AppRegistry } from 'react-native';
-import Login from './src/Login';
-import ScreenSelection from './src/ScreenSelection';
-import PromptScreen from './src/PromptScreen';
-import WriteScreen from './src/WriteScreen';
-import DrawScreen from './src/DrawScreen';
-import { StackNavigator } from 'react-navigation';
+import { StyleSheet, AppRegistry } from 'react-native';
+import { Provider } from 'react-redux';
+import store from './src/reduxStore';
 
 export const BasicApp = StackNavigator({
   Main: {screen: Login},
@@ -19,7 +15,9 @@ class App extends Component {
 
   render() {
     return (
+    <Provider store = { store }>
     <BasicApp />
+    </Provider>
     );
   }
 }
