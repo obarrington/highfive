@@ -7,7 +7,9 @@ export default function currentUserReducer(state = initialCurrentUserState, acti
 
 switch (action.type) {
   case LOGIN_AS_GUEST:
-    nextState = {  };
+    nextState = {
+      isLoggedIn: true,
+    };
     break;
   default:
     nextState = {...state};

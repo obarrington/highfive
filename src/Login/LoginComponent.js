@@ -22,6 +22,17 @@ export default class LoginComponent extends Component {
       navigate('Selection');
   };
 
+  navigateToNextScreen() {
+    const { navigate } = this.props.navigation;
+    navigate('Selection');
+  };
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.currentUser.isLoggedIn){
+      this.navigateToNextScreen()
+    }
+  }
+
   render() {
     return (
       <ScrollView style={styles.scroll}>
@@ -65,7 +76,7 @@ export default class LoginComponent extends Component {
         <Button
               label="Continue As Guests"
               styles={{button: styles.guestVerification, label: styles.buttonWhiteText}}
-              onPress={this.onButtonPress}
+              onPress={this.props.loginAsGuest}
         />
       </Container>
       </View>

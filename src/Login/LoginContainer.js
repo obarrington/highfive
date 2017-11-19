@@ -5,6 +5,7 @@ import { loginAsGuest } from '../actions/currentUserActions';
 const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.currentUser,
+    navigation: ownProps.navigation,
   }
 }
 
