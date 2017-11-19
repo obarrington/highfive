@@ -9,12 +9,13 @@ export default class Write extends React.Component {
     constructor(props){
         super(props);
         this.state = {text: 'Write Answer to the Prompt',};
+        this.promptText = this.props.navigation.state.params.promptText;
     }
     render() {
         return (
             <View style={styles.container}>
                 <View style = {styles.containerA}>
-                    <Text style = {styles.headline}>Prompt Goes Here</Text>
+                    <Text style = {styles.headline}>{this.promptText}</Text>
                 </View>
                 <View style = {styles.containerB}>
                     <TextInput
