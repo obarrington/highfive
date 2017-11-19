@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View} from 'react-native';
-import Login from './Login';
-import ScreenSelection from './ScreenSelection';
-import PromptScreen from './PromptScreen';
+import Login from '.src/Login';
+import ScreenSelection from '.src/ScreenSelection';
+import PromptScreen from '.src/PromptScreen';
+import EndScreen from '.src/EndScreen';
 import { StackNavigator } from 'react-navigation';
 
 export const BasicApp = StackNavigator({
   Main: {screen: Login},
   Selection: {screen: ScreenSelection},
   Prompt: {screen: PromptScreen},
+  EndScreen: {screen: EndScreen}
 });
+
 export default class App extends Component {
 
   render() {

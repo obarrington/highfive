@@ -5,7 +5,6 @@ import Container from './Container';
 import Button from './Button';
 import App from './App';
 
-
 export default class ScreenSelection extends Component {
   constructor(props) {
     super(props);
@@ -20,8 +19,6 @@ export default class ScreenSelection extends Component {
 
       navigate('Prompt');
   };
-
-
 
   render() {
     return (
