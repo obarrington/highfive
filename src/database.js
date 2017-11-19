@@ -122,6 +122,36 @@ async function getPrompt(type) {
     console.log(error.message);
   }
 }
+var currUser = firebase.auth().currentUser;
+
+
+function getUser() {
+  console.log(currUser.uid);
+  if (currUser != null) {
+    console.log("got user");
+    var user = {
+      name: currUser.displayName,
+      email: currUser.email,
+      uid: currUser.uid,
+    };
+  return ref.child("Users").child(user.uid);
+  }
+}
+
+function addDrawing(drawing){
+    var user = getUser();
+    var curr = Object.keys(userData.History.draw).length;
+    ref.child("Users").child(user.uid).set({
+      new_exercise: drawing,
+    });
+  }
+function addWriting(writing){
+      var user = getUser();
+      var curr = Object.keys(userData.history.write).length;
+      ref.child("users").child(user.uid).set({
+          new_exercise: writing,
+        });
+}
 
 module.exports = {
   getMeAPrompt: function(type) {
@@ -133,5 +163,10 @@ module.exports = {
     //   console.log(prompt);
     // });
     return getPrompt(type);
-  }
+
+
+  },
+  getUserData: function(){
+    return getUser();
+  },
 }

@@ -9,11 +9,14 @@ import App from './App';
   Selection: { screen: ScreenSelection },
 });*/
 
-
+const firebase = require('firebase');
 export default class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      email: '',
+      password: '',
+    };
 
     this.onButtonPress = this.onButtonPress.bind(this);
   }
@@ -22,25 +25,63 @@ export default class Login extends Component {
       const { navigate } = this.props.navigation;
       navigate('Selection');
   };
+  createAccount(){
+    console.log("email is," + this.state.email);
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+  });
+  const { navigate } = this.props.navigation;
+  navigate('Selection');
+  };
+  logIn(){
+    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+  });
+  const { navigate } = this.props.navigation;
+  navigate('Selection');
+  };
 
   render() {
     return (
       <ScrollView style={styles.scroll}>
       <Container>
-    <Text style={styles.textLabel}>Username or Email</Text>
-      <TextInput style={styles.textInput}/>
+    <Text style={styles.textLabel}>Email</Text>
+      <TextInput style={styles.textInput}
+      onChangeText={(text) => this.setState({email:text})}
+      />
         </Container>
         <Container>
     <Text style={styles.textLabel}>Password</Text>
     <TextInput
         secureTextEntry={true}
         style={styles.textInput}
+        onChangeText={(text) => this.setState({password:text})}
     />
 </Container>
       <View style={styles.footer}>
     <Container>
         <Button
-            label="Continue"
+            label="Log in"
+            styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
+            onPress={() => this.logIn() }
+  />
+    </Container>
+    <Container>
+        <Button
+            label="Create Account"
+            styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
+            onPress={() => this.createAccount() }
+  />
+    </Container>
+    <Container>
+        <Button
+            label="Continue as a Guest"
             styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
             onPress={this.onButtonPress}
   />
