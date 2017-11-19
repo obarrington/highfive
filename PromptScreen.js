@@ -22,7 +22,7 @@ export default class PromptScreen extends Component {
 
     nextScreen() {
         const { navigate } = this.props.navigation;
-        navigate(this.promptType);
+        navigate(this.promptType, {promptText: this.state.prompt});
     };
 
 

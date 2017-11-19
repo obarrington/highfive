@@ -8,19 +8,21 @@ import { AppRegistry, StyleSheet, Text, View, TextInput, Alert,
 
 export default class Write extends React.Component {
     _onPressButton(){
-        Alert.alert('Prompt Goes Here!')
+        Alert.alert({this.promptText})
     }
     constructor(props){
         super(props);
         this.state = {text: 'Answer to the Prompt',};
+        //write this.promptText wherever i want it to show up
+        this.promptText = this.props.navigation.state.params.promptText;
     }
     render() {
         return (
             //should be adited
             <View style={styles.container}>
-                <View style = {styles.containerA}>
-                    <Text style = {styles.headline}>Prompt Goes Here</Text>
-                </View>
+                // <View style = {styles.containerA}>
+                //     <Text style = {styles.headline}>Prompt Goes Here</Text>
+                // </View>
                  <View style = {styles.containerB}>
                     <TextInput
                         style = {styles.textInput}
@@ -47,12 +49,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    containerA: {
-        flex: 1,
-        backgroundColor: '#8fbc8f',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+    // containerA: {
+    //     flex: 1,
+    //     backgroundColor: '#8fbc8f',
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    // },
     containerB: {
         flex: 3,
         backgroundColor: '#8fbc8f',
