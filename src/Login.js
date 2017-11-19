@@ -15,7 +15,7 @@ export default class Login extends Component {
     super(props);
     this.state = {};
 
-    this.onButtonPress=this.onButtonPress.bind(this);
+    this.onButtonPress = this.onButtonPress.bind(this);
   }
 
   onButtonPress() {
@@ -70,24 +70,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF'
   },
   textLabel: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        fontFamily: 'Verdana',
-        marginBottom: 10,
-        color: '#595856'
-    },
-    buttonWhiteText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    fontFamily: 'Verdana',
+    marginBottom: 10,
+    color: '#595856'
+  },
+  buttonWhiteText: {
     fontSize: 20,
     color: '#FFF',
-},
-buttonBlackText: {
+  },
+  buttonBlackText: {
     fontSize: 20,
     color: '#595856'
-},
-primaryButton: {
+  },
+  primaryButton: {
     backgroundColor: '#34A853'
-},
-footer: {
-   marginTop: 100
-}
+  },
+  footer: {
+    marginTop: 100
+  }
 });

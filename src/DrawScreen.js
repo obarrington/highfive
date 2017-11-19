@@ -12,6 +12,11 @@ export default class ScreenSelection extends Component {
     this.state = {};
   }
 
+  nextScreen() {
+    const { navigate } = this.props.navigation;
+    navigate('end');
+  };
+
   render() {
     return (
       <View style={{flex: 1}}>
