@@ -10,6 +10,7 @@ switch (action.type) {
     nextState = {  };
     break;
   default:
+    nextState = {...state};
 
 }
 

@@ -1,4 +1,6 @@
+import React from 'react';
 import { StackNavigator } from 'react-navigation';
+import { connect } from 'react-redux';
 import Login from './Login';
 import ScreenSelection from './ScreenSelection';
 import PromptScreen from './PromptScreen';
