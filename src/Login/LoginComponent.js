@@ -26,6 +26,9 @@ export default class LoginComponent extends Component {
     return (
       <ScrollView style={styles.scroll}>
       <Container>
+        <Text style={styles.heading}>HIGH FIVE</Text>
+      </Container>
+      <Container>
         <Text style={styles.textLabel}>Username or Email</Text>
         <TextInput style={styles.textInput}/>
       </Container>
@@ -37,13 +40,34 @@ export default class LoginComponent extends Component {
         />
       </Container>
       <View style={styles.footer}>
-
-      <Button
-            label="Continue"
-            styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
+      <Container>
+        <Button
+            label="Login"
+            styles={{button: styles.emailUsernameVerification, label: styles.buttonWhiteText}}
             onPress={this.onButtonPress}
-      />
-
+        />
+      </Container>
+      <Container>
+        <Button
+              label="f    Login with FaceBook"
+              styles={{button: styles.facebookVerification, label: styles.buttonWhiteText}}
+              onPress={this.onButtonPress}
+        />
+      </Container>
+      <Container>
+        <Button
+              label="g+    Login with Google"
+              styles={{button: styles.googleVerification, label: styles.buttonWhiteText}}
+              onPress={this.onButtonPress}
+        />
+      </Container>
+      <Container>
+        <Button
+              label="Continue As Guests"
+              styles={{button: styles.guestVerification, label: styles.buttonWhiteText}}
+              onPress={this.onButtonPress}
+        />
+      </Container>
       </View>
       </ScrollView>
 

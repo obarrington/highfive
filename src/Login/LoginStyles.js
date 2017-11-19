@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   scroll: {
-    backgroundColor: '#E1D7D8',
-    padding: 30,
+    backgroundColor: '#52ffa9',
+    padding: 10,
     flexDirection: 'column'
   },
   label: {
@@ -14,16 +14,23 @@ export default StyleSheet.create({
     alignSelf: 'flex-end'
   },
   textInput: {
-    height: 80,
+    height: 30,
     fontSize: 30,
-    backgroundColor: '#FFF'
+    backgroundColor: '#FFF',
+  },
+  heading: {
+    fontSize: 50,
+    fontWeight: '900',
+    color: '#FFF',
+    textAlign: 'center',
+    padding: 10
   },
   textLabel: {
         fontSize: 20,
         fontWeight: 'bold',
         fontFamily: 'Verdana',
         marginBottom: 10,
-        color: '#595856'
+        color: '#FFF',
     },
     buttonWhiteText: {
     fontSize: 20,
@@ -31,12 +38,21 @@ export default StyleSheet.create({
 },
 buttonBlackText: {
     fontSize: 20,
-    color: '#595856'
+    color: '#595856',
 },
-primaryButton: {
-    backgroundColor: '#34A853'
+emailUsernameVerification: {
+    backgroundColor: '#aae0d5',
+},
+facebookVerification: {
+    backgroundColor: '#3B5998',
+},
+googleVerification: {
+    backgroundColor: '#d34836',
+},
+guestVerification: {
+    backgroundColor: '#52ffa9',
 },
 footer: {
-   marginTop: 100
+   marginTop: 10
 }
 });
