@@ -50,21 +50,30 @@ export default class Login extends Component {
   render() {
     return (
       <ScrollView style={styles.scroll}>
-      <Container>
-    <Text style={styles.textLabel}>Email</Text>
+      <Container style={styles.bigContainer}>
+    <Text style={styles.textLabel}></Text>
       <TextInput style={styles.textInput}
       onChangeText={(text) => this.setState({email:text})}
+      placeholder="Email"
       />
         </Container>
         <Container>
-    <Text style={styles.textLabel}>Password</Text>
+    <Text style={styles.textLabel}></Text>
     <TextInput
         secureTextEntry={true}
         style={styles.textInput}
         onChangeText={(text) => this.setState({password:text})}
+        placeholder="Password"
     />
 </Container>
       <View style={styles.footer}>
+      <Container>
+          <Button
+              label="Continue as Guest"
+              styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
+              onPress={this.onButtonPress}
+    />
+      </Container>
     <Container>
         <Button
             label="Log in"
@@ -74,18 +83,12 @@ export default class Login extends Component {
     </Container>
     <Container>
         <Button
-            label="Create Account"
-            styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
+            label="Sign up for an account"
+            styles={{button: styles.secondaryButton, label: styles.buttonGreyText}}
             onPress={() => this.createAccount() }
   />
     </Container>
-    <Container>
-        <Button
-            label="Continue as a Guest"
-            styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
-            onPress={this.onButtonPress}
-  />
-    </Container>
+
     </View>
       </ScrollView>
 
@@ -94,9 +97,13 @@ export default class Login extends Component {
 }
 const styles = StyleSheet.create({
   scroll: {
-    backgroundColor: '#E1D7D8',
+    backgroundColor: '#8fbc8f',
     padding: 30,
     flexDirection: 'column'
+  },
+  bigContainer: {
+    marginTop: 35,
+    backgroundColor: '#8fbc8f',
   },
   label: {
     color: '#0d8898',
@@ -111,6 +118,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF'
   },
   textLabel: {
+    marginTop: 25,
     fontSize: 20,
     fontWeight: 'bold',
     fontFamily: 'Verdana',
@@ -120,15 +128,29 @@ const styles = StyleSheet.create({
   buttonWhiteText: {
     fontSize: 20,
     color: '#FFF',
+    fontWeight: 'bold',
+    fontFamily: 'Verdana',
   },
   buttonBlackText: {
     fontSize: 20,
     color: '#595856'
   },
   primaryButton: {
-    backgroundColor: '#34A853'
+      backgroundColor: '#34A853',
+      borderWidth: 1.25,
+      borderRadius: 50,
+      borderColor: '#fff',
+  },
+  buttonGreyText: {
+    fontSize: 16,
+    color: '#4D5656',
+    fontWeight: 'bold',
+    fontFamily: 'Verdana',
+  },
+  secondaryButton: {
+
   },
   footer: {
-    marginTop: 100
+    marginTop: 50
   }
 });
