@@ -111,7 +111,8 @@ export default class DigitalTouch extends Component {
 
       onPanResponderGrant: (evt, gestureState) => {
         console.log('onTouch');
-        let [x, y] = [evt.nativeEvent.pageX, evt.nativeEvent.pageY];
+        let [x, y] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
+        //let [x, y] = [gestureState.moveX, gestureState.moveY];
         console.log([x, y]);
         const newCurrentPoints = this.state.currentPoints;
         newCurrentPoints.push({ x, y });
@@ -130,7 +131,9 @@ export default class DigitalTouch extends Component {
       },
       onPanResponderMove: (evt, gestureState) => {
         console.log('onMove');
-        let [x, y] = [evt.nativeEvent.pageX, evt.nativeEvent.pageY];
+        //let [x, y] = [evt.nativeEvent.pageX, evt.nativeEvent.pageY];
+        //let [x, y] = [gestureState.moveX, gestureState.moveY];
+        let [x, y] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
         console.log([x, y]);
         const newCurrentPoints = this.state.currentPoints;
         newCurrentPoints.push({ x, y });
@@ -156,6 +159,7 @@ export default class DigitalTouch extends Component {
       onPanResponderRelease: (evt, gestureState) => {
         console.log("onResponderRelease");
         console.log(this.props.donePaths);
+        console.log(gestureState.moveX, gestureState.moveY);
         const newPaths = this.props.donePaths;
         if (this.state.currentPoints.length > 0) {
           // Cache the shape object so that we aren't testing
@@ -169,6 +173,7 @@ export default class DigitalTouch extends Component {
               fill="none"
             />
           );
+          console.log(this.state.reaction.pointsToSvg(this.state.currentPoints));
         }
 
         this.state.reaction.addGesture(this.state.currentPoints);
@@ -201,8 +206,11 @@ export default class DigitalTouch extends Component {
   //   );
   // }
   _onLayoutContainer = (e) => {
-    this.state.reaction.setOffset(e.nativeEvent.layout);
+    this.state.reaction.setOffset(e.nativeEvent.layout,this.props.totalOffset);
+    //this.state.reaction.setOffset(0);
   }
+
+  // onLayout={this._onLayoutContainer}
   render() {
     return (
       <View
@@ -225,8 +233,8 @@ export default class DigitalTouch extends Component {
                 key={this.state.currentMax}
                 d={this.state.reaction.pointsToSvg(this.state.currentPoints)}
                 stroke={this.props.color}
-                strokeWidth={this.props.strokeWidth - 1}
-                strokeOpacity={0.5}
+                strokeWidth={this.props.strokeWidth}
+
                 fill="none"
               />
             </G>
