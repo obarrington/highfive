@@ -12,7 +12,7 @@ const Button = (props) => {
         if(props.children){
             return props.children;
         }
-        return <Text style={props.styles.label}>{props.label}</Text>
+        return <Text style={[styles.label, props.styles.label]}>{props.label}</Text>
     }
 
     return (
@@ -34,6 +34,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 20
     },
+    label: {
+      fontSize: 24
+    }
 });
 
 export default Button;

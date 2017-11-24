@@ -3,7 +3,6 @@ import { StyleSheet, Text, View} from 'react-native';
 import { StackNavigator, NavigationActions } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
-import App from './App';
 
 
 export default class ScreenSelection extends Component {
@@ -42,6 +41,7 @@ export default class ScreenSelection extends Component {
 
 };
 }
+<<<<<<< HEAD
   const styles = StyleSheet.create({
     Container: {
       flex: 1,
@@ -69,3 +69,6 @@ export default class ScreenSelection extends Component {
       color: '#fff'
     },
 });
+=======
+const styles = StyleSheet.create({});
+>>>>>>> everts-rebase
