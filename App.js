@@ -1,16 +1,38 @@
 import React, { Component } from 'react';
-import { StyleSheet, AppRegistry } from 'react-native';
+import { StyleSheet, AppRegistry, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import store from './src/reduxStore';
-import AppNavigationContainer from './src/AppNavigationContainer';
+import Login from './src/Login';
+import ScreenSelection from './src/ScreenSelection';
+import ProfileScreen from './src/ProfileScreen';
+import PromptScreen from './src/PromptScreen';
+import WriteScreen from './src/WriteScreen';
+import DrawScreen from './src/DrawScreen';
+import EndScreen from './src/EndScreen';
 
+import { StackNavigator } from 'react-navigation';
+
+export const AppNavigation = StackNavigator(
+  {
+    Main: {screen: Login},
+    Selection: {screen: ScreenSelection},
+    Profile: {screen: ProfileScreen},
+    Prompt: {screen: PromptScreen},
+    draw: {screen: DrawScreen},
+    write: {screen: WriteScreen},
+    end: {screen: EndScreen}
+  },
+  {
+    headerMode: 'none'
+  }
+);
 
 class App extends Component {
 
   render() {
     return (
     <Provider store = { store }>
-    <AppNavigationContainer />
+      <AppNavigation />
     </Provider>
     );
   }

@@ -3,24 +3,22 @@ import { StyleSheet, Text, View} from 'react-native';
 import { StackNavigator, NavigationActions } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
-import App from './App';
 
-const database = require('./UserDatabase');
+const database = require('./database');
 export default class ScreenSelection extends Component {
   constructor(props) {
     super(props);
     this.state = {};
 
+    this.back = this.back.bind(this);
+    this.logout = this.logout.bind(this);
+  }
 
   getUserData(){
     user = database.getUser();
   }  // The user's ID, unique to the Firebase project. Do NOT use
-                   // this value to authenticate with your backend server, if
-                   // you have one. Use User.getToken() instead.
-}
-    this.back = this.back.bind(this);
-    this.logout = this.logout.bind(this);
-  }
+  // this value to authenticate with your backend server, if
+  // you have one. Use User.getToken() instead.
 
   back() {
     const { goBack } = this.props.navigation;
