@@ -1,6 +1,17 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  load: {
+    flex: 1,
+    padding: 300,
+    alignItems: 'center',
+    justifycontent: 'center',
+  },
+  error:{
+    fontSize: 20,
+    color: '#ff2d29',
+    textAlign: 'center',
+  },
   scroll: {
     backgroundColor: '#52ffa9',
     padding: 10,
@@ -50,7 +61,7 @@ googleVerification: {
     backgroundColor: '#d34836',
 },
 guestVerification: {
-    backgroundColor: '#52ffa9',
+    backgroundColor: 'transparent',
 },
 footer: {
    marginTop: 10

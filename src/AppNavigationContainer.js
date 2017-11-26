@@ -6,14 +6,15 @@ import ScreenSelection from './ScreenSelection';
 import PromptScreen from './PromptScreen';
 import WriteScreen from './WriteScreen';
 import DrawScreen from './DrawScreen';
-
+import CreationScreen from './Login/AccountCreationComponent';
 
 export const AppNavigation = StackNavigator({
   Main: {screen: Login},
   Selection: {screen: ScreenSelection},
   Prompt: {screen: PromptScreen},
   draw: {screen: DrawScreen},
-  wrie: {screen: WriteScreen},
+  write: {screen: WriteScreen},
+  Creation: {screen: CreationScreen},
 });
 
 //eslint-disable-next-line no-unused-vars

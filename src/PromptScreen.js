@@ -5,7 +5,7 @@ import Container from './Container';
 import Button from './Button';
 import ScreenSelection from './ScreenSelection'
 
-const database = require('./database');
+const database = require('./firebase/prompts');
 
 var exercisePrompt = "";
 
