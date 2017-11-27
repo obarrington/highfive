@@ -3,10 +3,9 @@ import { StyleSheet, Text, View} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
-import App from './App';
 import ScreenSelection from './ScreenSelection'
 
-const database = require('./database');
+const database = require('./firebase/prompts');
 
 var exercisePrompt = "";
 

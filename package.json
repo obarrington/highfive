@@ -20,9 +20,17 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "babel-preset-expo": "^4.0.0",
+    "create-react-native-app": "^1.0.0",
     "expo": "^21.0.0",
-    "react": "16.0.0-alpha.12",
+    "express": "^4.6.1",
+    "firebase": "^4.6.2",
+    "react": "^16.0.0-alpha.12",
     "react-native": "^0.48.4",
-    "react-navigation": "1.0.0-beta.15"
+    "react-navigation": "^1.0.0-beta.15",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-offline": "^2.0.0"
   }
 }
