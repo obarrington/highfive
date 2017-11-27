@@ -29,7 +29,8 @@ export default class ActualDrawingScreen extends React.Component {
       donePaths: [],
       doneCircle: [],
       totalOffset: 0,
-      prompt: 'loading'
+      prompt: 'loading',
+      seconds: 120
     };
     this.promptText = this.props.navigation.state.params.prompt;
     console.log('In constructor');
@@ -37,6 +38,12 @@ export default class ActualDrawingScreen extends React.Component {
     this._undo = this._undo.bind(this);
     this._setDonePaths = this._setDonePaths.bind(this);
     this._setDoneCircles = this._setDoneCircles.bind(this);
+    this.nextScreen = this.nextScreen.bind(this);
+  }
+
+  nextScreen() {
+    const { navigate } = this.props.navigation;
+    navigate('end');
   }
 
   DidJob() {
@@ -48,9 +55,23 @@ export default class ActualDrawingScreen extends React.Component {
     // console.log('in will mount');
     // console.log(this.state.prompt);
     // this.setState({prompt: this.promptText}, this.DidJob());
+
+    var timer = setInterval(() => {
+      this.setState(previousState => {
+        return { seconds: previousState.seconds - 1 };
+      });
+    }, 1000);
+
+    this.setState({timer: timer});
+    setTimeout(this.nextScreen, 132000);
+
     foo = this.promptText;
     console.log(foo);
     console.log(this.state.value);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.timer);
   }
 
   _onPressButton(){
@@ -129,6 +150,7 @@ export default class ActualDrawingScreen extends React.Component {
           <Text>
             Stroke Width: {this.state.value}
           </Text>
+          <Text style={{alignSelf: 'center'}}>{this.state.seconds}</Text>
         </View>
 
         <View
