@@ -18,19 +18,9 @@ class Reaction {
   }
 
   pointsToSvg(points) {
-    // if (points.length > 0) {
-    //   let path = `M ${points[0].x},${points[0].y}`;
-    //   points.forEach((point) => {
-    //     path = `${path} L ${point.x},${point.y}`;
-    //   });
-    //   return path;
-    // } else {
-    //   return '';
-    // }
 
     const offsetX = this._offsetX;
     const offsetY = this._offsetY;
-    //console.log(points);
 
     if (points.length > 0) {
       let path = `M ${points[0].x - offsetX},${points[0].y - offsetY}`;

@@ -1,91 +1,8 @@
-// import React, { Component } from "react";
-// import { Button, View } from "react-native";
-// import Container from "./Container";
-// import RNDraw from "rn-draw";
-// import { FileSystem, takeSnapshotAsync } from "expo";
-//
-//
-//
-// export default class DigitalTouch extends Component {
-//   componentDidMount() {
-//       FileSystem.makeDirectoryAsync(
-//         FileSystem.documentDirectory + "photos"
-//       ).catch(e => {
-//         console.log(e, "Directory exists");
-//       });
-//     }
-//
-//     saveDrawingToImage = async () => {
-//       const img = await takeSnapshotAsync(this.drawingView, {
-//         format: "png",
-//         result: "base64",
-//         width: 100,
-//         height: 100
-//       });
-//       console.log(img); // spits out the base 64 of the image
-//     };
-//
-//     render() {
-//       return (
-//         <Container>
-//           <Button
-//             style={{ position: "absolute", top: 20, left: 20 }}
-//             onPress={this.saveDrawingToImage}
-//             title="SAVE DRAWING"
-//           />
-//           <View
-//             style={{ flex: 1, backgroundColor: "rgba(0,0,0,0)" }}
-//             ref={view => (this.drawingView = view)}
-//           >
-//             <RNDraw
-//               containerStyle={{ backgroundColor: "rgba(0,0,0,0)" }}
-//               color={"#000000"}
-//               strokeWidth={4}
-//             />
-//           </View>
-//         </Container>
-//       );
-//     }
-// }
-
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, PanResponder } from 'react-native';
 import { Constants } from 'expo';
 import Reaction from './Reaction';
 import Svg, { G, Path, Circle } from 'react-native-svg';
-
-// import React, { Component } from 'react';
-// import {
-//   AppRegistry,
-//   Button,
-//   Image,
-//   Modal,
-//   StatusBar,
-//   StyleSheet,
-//   Text,
-//   TouchableOpacity,
-//   View,
-//   PanResponder, // we want to bring in the PanResponder system
-//   Animated,
-//   Dimensions,
-// } from 'react-native';
-// import RNDraw from "rn-draw";
-// import Container from "./Container";
-// import Expo, { Constants, GLView } from "expo";
-//
-// import Svg, { G, Path } from 'react-native-svg';
-// import Reaction from './Reaction';
-//
-// console.disableYellowBox = true;
-
-// var React = require('react-native');
-//
-// var {
-//   View,
-//   Component,
-//   } = React;
-
-//var SignaturePad = require('react-native-signature-pad');
 
 export default class DigitalTouch extends Component {
   constructor(props) {
@@ -151,16 +68,6 @@ export default class DigitalTouch extends Component {
           currentPoints: newCurrentPoints,
           currentMax: this.state.currentMax
         });
-        // The most recent move distance is gestureState.move{X,Y}
-
-        // The accumulated gesture distance since becoming responder is
-        // gestureState.d{x,y}
-        console.log("Moving");
-        // console.log(evt.identifier);
-        // console.log(evt.locationX, evt.locationY);
-        // console.log(evt.pageX, evt.pageY);
-        // console.log(evt.target);
-        console.log(gestureState.moveX, gestureState.moveY);
 
       },
       onPanResponderTerminationRequest: (evt, gestureState) => true,
@@ -171,10 +78,6 @@ export default class DigitalTouch extends Component {
         const newPaths = this.props.donePaths;
         const newDot = this.props.doneCircle;
         let [startX, startY] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
-        // this.setState({
-        //   circlePointX: startX,
-        //   circlePointY: startY
-        // });
         if (this.state.currentPoints.length > 0) {
           var isPoint = true;
           const newCirclePointX = this.state.circlePointX;
@@ -242,13 +145,6 @@ export default class DigitalTouch extends Component {
       },
     });
   }
-
-  // render() {
-  //   return (
-  //     <View {...this._panResponder.panHandlers} style={styles.container}>
-  //     </View>
-  //   );
-  // }
   _onLayoutContainer = (e) => {
     this.state.reaction.setOffset(e.nativeEvent.layout,this.props.totalOffset);
     //this.state.reaction.setOffset(0);

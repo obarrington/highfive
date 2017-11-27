@@ -18,40 +18,7 @@ var DEFAULT_VALUE = 4;
 // import { AppRegistry, StyleSheet, View, Text } from "react-native";
 
 export default class ActualDrawingScreen extends React.Component {
-//   state = {
-//     fake: 0,
-//     value: 0.2
-//   };
-//
-//   render() {
-//     return (
-//       <View style={styles.container}>
-        // <Slider
-        //   value={this.state.value}
-        //   onValueChange={value => this.setState({ value })}
-        //   minimumValue={-10}
-        //   maximumValue={42}
-        //   minimumTrackTintColor='#1fb28a'
-        //   maximumTrackTintColor='#d3d3d3'
-        //   thumbTintColor='#1a9274'
-        // />
-        // <Text>
-        //   Value: {this.state.value}
-        // </Text>
-//       </View>
-//     );
-//   }
-// }
-//
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     marginLeft: 10,
-//     marginRight: 10,
-//     alignItems: "stretch",
-//     justifyContent: "center"
-//   }
-// });
+
   constructor(props, context) {
     super(props, context);
 
@@ -90,16 +57,6 @@ export default class ActualDrawingScreen extends React.Component {
     console.log('in button');
     console.log(foo);
     Alert.alert(foo)
-    // Alert.alert(
-    //   this.promptText,
-    //   'My Alert Msg',
-    //   [
-    //     {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
-    //     {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-    //     {text: 'OK', onPress: () => console.log('OK Pressed')},
-    //   ],
-    //   { cancelable: false }
-    // )
   };
 
   _cancel = () => {
@@ -195,7 +152,7 @@ export default class ActualDrawingScreen extends React.Component {
         <TouchableHighlight onPress={this._onPressButton} underlayColor
             ="white">
             <View style={styles.button}>
-                <Text style={styles.buttonText}>ClickForPrompt</Text>
+                <Text style={styles.buttonText}>Click For Prompt</Text>
             </View>
         </TouchableHighlight>
       </View>
