@@ -9,8 +9,11 @@ npm install react-navigation
 npm install firebase
 npm install react-redux
 npm install react-native-slider
+npm install redux
+npm install redux-logger
+npm install redux-offline
 
-Download the expo app on your phone. Just search expo in the app/android store. 
+Download the expo app on your phone. Just search expo in the app/android store.
 From your terminal, navigate to the location of the directory directory, run npm start & scan the QR code from your expo app on your phone.
 
 
