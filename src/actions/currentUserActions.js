@@ -1,5 +1,4 @@
 import { authenticateUser } from '../firebase/users'
-
 export const LOGIN_AS_GUEST = 'LOGIN_AS_GUEST'
 export const LOGIN_USER = 'LOGIN_USER'
 export const LOGIN_USER_COMMIT = 'LOGIN_USER_COMMIT'

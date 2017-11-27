@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(loginAsGuest())
     },
     onLoginUser: (user) => {
-      dispatch(loginUser(user))
+      dispatch(loginUser(firebase.auth.currentUser()))
     },
     onNewUser: () => {
       dispatch(newUser())
