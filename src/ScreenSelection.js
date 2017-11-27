@@ -3,7 +3,6 @@ import { StyleSheet, Text, View} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
-import App from './App';
 
 
 export default class ScreenSelection extends Component {
@@ -12,8 +11,10 @@ export default class ScreenSelection extends Component {
     this.state = {};
 
 
-    this.write=this.write.bind(this);
-    this.draw=this.draw.bind(this);
+    this.write = this.write.bind(this);
+    this.draw = this.draw.bind(this);
+    this.profile = this.profile.bind(this);
+    this.settings = this.settings.bind(this);
   }
 
   write() {
@@ -28,18 +29,37 @@ export default class ScreenSelection extends Component {
       navigate('Prompt', {type: "draw"});
   };
 
+  profile() {
+    const { navigate } = this.props.navigation;
 
+    navigate('Profile');
+  };
 
+  settings() {
+
+  };
 
   render() {
     return (
     <View style={{flex: 1}}>
-      <View style={styles.writeContainer}>
-      <Button
-        label="Write"
-        styles={{button: styles.primaryButton, label:styles.label}}
-        onPress={this.write}
+      <View style={styles.headerContainer}>
+        <Button
+          label="Profile"
+          styles={{button: styles.headerButton, label: styles.labelSmall}}
+          onPress={this.profile}
         />
+        <Button
+          label="Settings"
+          styles={{button: styles.headerButton, label: styles.labelSmall}}
+        />
+      </View>
+      <View style={styles.writeContainer}>
+        <Button
+          label="Write"
+          styles={{button: styles.primaryButton, label:styles.label}}
+          onPress={this.write}
+        />
+
       </View>
       <View style={styles.drawContainer}>
       <Button
@@ -73,7 +93,27 @@ export default class ScreenSelection extends Component {
       fontFamily: 'Verdana',
       color: '#fff',
     },
+    labelSmall: {
+      fontSize: 12,
+      fontWeight: 'bold',
+      fontFamily: 'Verdana',
+      color: '#fff'
+    },
     primaryButton: {
       backgroundColor: 'transparent',
     },
+    headerContainer: {
+      flex: 0.35,
+      backgroundColor: '#75c68b',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'flex-end',
+    },
+    headerButton: {
+      backgroundColor: '#34A853',
+      borderWidth: 1,
+      borderRadius: 50,
+      borderColor: '#fff',
+    },
+
 });
