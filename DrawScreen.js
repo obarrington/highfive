@@ -52,7 +52,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, PanResponder } from 'react-native';
 import { Constants } from 'expo';
 import Reaction from './Reaction';
-import Svg, { G, Path, Circle } from 'react-native-svg';
+import Svg, { G, Path } from 'react-native-svg';
 
 // import React, { Component } from 'react';
 // import {
@@ -93,8 +93,6 @@ export default class DigitalTouch extends Component {
     this.state = {
       currentMax: 0,
       currentPoints: [],
-      // circlePointX: '',
-      // circlePointY: '',
       reaction: new Reaction()
     };
     _panResponder = {
@@ -117,16 +115,11 @@ export default class DigitalTouch extends Component {
         //let [x, y] = [gestureState.moveX, gestureState.moveY];
         console.log([x, y]);
         const newCurrentPoints = this.state.currentPoints;
-        // const newCirclePointX = this.state.circlePointX;
-        // const newCirclePointY = this.state.circlePointX;
         newCurrentPoints.push({ x, y });
 
         this.setState({
           donePaths: this.props.donePaths,
-          doneCircle: this.props.doneCircle,
           currentPoints: newCurrentPoints,
-          circlePointX: x,
-          circlePointY: y,
           currentMax: this.state.currentMax
         });
         //console.log(this.props.donePaths);
@@ -147,7 +140,6 @@ export default class DigitalTouch extends Component {
 
         this.setState({
           donePaths: this.props.donePaths,
-          doneCircle: this.props.doneCircle,
           currentPoints: newCurrentPoints,
           currentMax: this.state.currentMax
         });
@@ -169,51 +161,18 @@ export default class DigitalTouch extends Component {
         console.log(this.props.donePaths);
         console.log(gestureState.moveX, gestureState.moveY);
         const newPaths = this.props.donePaths;
-        const newDot = this.props.doneCircle;
-        let [startX, startY] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
-        // this.setState({
-        //   circlePointX: startX,
-        //   circlePointY: startY
-        // });
         if (this.state.currentPoints.length > 0) {
-          var isPoint = true;
-          const newCirclePointX = this.state.circlePointX;
-          const newCirclePointY = this.state.circlePointX;
-          //newCirclePoint.push({ startX, startY });
-          this.state.currentPoints.forEach((point) => {
-            if (startX != point.x || startY != point.y) {
-              isPoint = false;
-            }
-          });
           // Cache the shape object so that we aren't testing
           // whether or not it changed; too many components?
-          if (isPoint) {
-            console.log("This is a point");
-            console.log(startX);
-            console.log(startY);
-            console.log(this.state.circlePointX);
-            console.log(this.state.circlePointY);
-            newDot.push(
-              <Circle
-                key={this.state.currentMax}
-                cx={this.state.circlePointX}
-                cy={this.state.circlePointY}
-                r={this.props.strokeWidth}
-                fill={this.props.color}
-              />
-            )
-          } else {
-            newPaths.push(
-              <Path
-                key={this.state.currentMax}
-                d={this.state.reaction.pointsToSvg(this.state.currentPoints)}
-                stroke={this.props.color}
-                strokeWidth={this.props.strokeWidth}
-                fill="none"
-              />
-            );
-          }
-
+          newPaths.push(
+            <Path
+              key={this.state.currentMax}
+              d={this.state.reaction.pointsToSvg(this.state.currentPoints)}
+              stroke={this.props.color}
+              strokeWidth={this.props.strokeWidth}
+              fill="none"
+            />
+          );
           console.log(this.state.reaction.pointsToSvg(this.state.currentPoints));
         }
 
@@ -221,13 +180,10 @@ export default class DigitalTouch extends Component {
 
         this.setState({
           currentPoints: [],
-          currentMax: this.state.currentMax + 1,
-          circlePointX: 0,
-          circlePointY: 0
+          currentMax: this.state.currentMax + 1
         });
 
         this.props.setDonePaths(newPaths);
-        this.props.setDoneCircles(newDot);
         // The user has released all touches while this view is the
         // responder. This typically means a gesture has succeeded
       },
@@ -281,7 +237,6 @@ export default class DigitalTouch extends Component {
 
                 fill="none"
               />
-              {this.props.doneCircle}
             </G>
           </Svg>
           {this.props.children}

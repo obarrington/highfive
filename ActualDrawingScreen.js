@@ -60,7 +60,6 @@ export default class ActualDrawingScreen extends React.Component {
       color: Colors.color7,
       value: 4,
       donePaths: [],
-      doneCircle: [],
       totalOffset: 0,
       prompt: 'loading'
     };
@@ -69,7 +68,6 @@ export default class ActualDrawingScreen extends React.Component {
     console.log(this.props.navigation.state.params.promptText)
     this._undo = this._undo.bind(this);
     this._setDonePaths = this._setDonePaths.bind(this);
-    this._setDoneCircles = this._setDoneCircles.bind(this);
   }
 
   DidJob() {
@@ -123,15 +121,7 @@ export default class ActualDrawingScreen extends React.Component {
   }
 
   _setDonePaths = (donePaths) => {
-    console.log('_setDonePahts');
-    console.log(donePaths);
     this.setState({ donePaths });
-  }
-
-  _setDoneCircles = (doneCircle) => {
-    console.log('_setDoneCircles');
-    console.log(doneCircle);
-    this.setState({ doneCircle });
   }
 
   _changeColor = (color) => {
@@ -165,9 +155,9 @@ export default class ActualDrawingScreen extends React.Component {
             minimumValue={1}
             maximumValue={20}
             step={1}
-            minimumTrackTintColor={this.state.color}
+            minimumTrackTintColor='#1fb28a'
             maximumTrackTintColor='#d3d3d3'
-            thumbTintColor={this.state.color}
+            thumbTintColor='#1a9274'
           />
           <Text>
             Stroke Width: {this.state.value}
@@ -181,8 +171,6 @@ export default class ActualDrawingScreen extends React.Component {
             ref={(view) => { this._signatureView = view; }}
             donePaths={this.state.donePaths}
             setDonePaths={this._setDonePaths}
-            doneCircle={this.state.doneCircle}
-            setDoneCircles={this._setDoneCircles}
             containerStyle={{ backgroundColor: '#FFF', marginTop: 10 }}
             width={Dimensions.get('window').width}
             height={Dimensions.get('window').width+50}
