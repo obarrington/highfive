@@ -152,13 +152,13 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 25,
     fontWeight: 'bold',
-    fontFamily: 'Verdana',
+    //fontFamily: 'Verdana',
     color: '#fff',
   },
   labelSmall: {
     fontSize: 12,
     fontWeight: 'bold',
-    fontFamily: 'Verdana',
+    //fontFamily: 'Verdana',
     color: '#fff'
   },
 
