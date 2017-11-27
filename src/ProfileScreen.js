@@ -13,10 +13,7 @@ export default class ScreenSelection extends Component {
     };
     this.back = this.back.bind(this);
     this.logout = this.logout.bind(this);
-  }
 
-    this.back = this.back.bind(this);
-    this.logout = this.logout.bind(this);
   }
 
   getUserData() {

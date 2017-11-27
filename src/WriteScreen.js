@@ -6,7 +6,7 @@ import { AppRegistry, StyleSheet, Text, View, TextInput, Alert } from 'react-nat
 import { StackNavigator } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
-import App from '../App';
+import App from './App';
 
 
 export default class Write extends React.Component {
