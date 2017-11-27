@@ -7,7 +7,7 @@ import ScreenSelection from './src/ScreenSelection';
 import ProfileScreen from './src/ProfileScreen';
 import PromptScreen from './src/PromptScreen';
 import WriteScreen from './src/WriteScreen';
-import DrawScreen from './src/DrawScreen';
+import ActualDrawingScreen from './src/ActualDrawingScreen';
 import EndScreen from './src/EndScreen';
 
 import { StackNavigator } from 'react-navigation';
@@ -18,7 +18,7 @@ export const AppNavigation = StackNavigator(
     Selection: {screen: ScreenSelection},
     Profile: {screen: ProfileScreen},
     Prompt: {screen: PromptScreen},
-    draw: {screen: DrawScreen},
+    draw: {screen: ActualDrawingScreen},
     write: {screen: WriteScreen},
     end: {screen: EndScreen}
   },
