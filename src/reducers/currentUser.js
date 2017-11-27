@@ -12,9 +12,14 @@ switch (action.type) {
     };
     break;
 
+  case LOGIN_USER:
+    nextState = {
+      isLoggedIn: true,
+    };
+    break;
+  
   case LOGIN_USER_COMMIT:
     nextState = {
-      ...action.payload,
       isLoggedIn: true
     }
 

@@ -40,10 +40,14 @@ submitNewUser = () => {
 }
 
 renderCurrState(){
-  if(this.state.loading){
+  if(!this.state.loading){
     return (
-      <View style ={styles.load}>
-        <ActivityIndicator size = 'large'/>
+      <View>
+        <ActivityIndicator
+        style = {styles.load}
+        color = '#ff7e1c'
+        size = "large"
+        />
       </View>
     )
   }
@@ -82,7 +86,7 @@ renderCurrState(){
 
   render() {
     return (
-      <View>
+      <View style ={styles.loadView}>
       {this.renderCurrState()}
       </View>
   );

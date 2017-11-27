@@ -1,21 +1,27 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  load: {
+  loading:{
     flex: 1,
     padding: 300,
-    alignItems: 'center',
-    justifycontent: 'center',
   },
-  error:{
-    fontSize: 20,
-    color: '#ff2d29',
-    textAlign: 'center',
+  load: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 80
+  },
+  loadView:{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 70
   },
   scroll: {
     backgroundColor: '#52ffa9',
     padding: 10,
-    flexDirection: 'column'
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   label: {
     color: '#0d8898',

@@ -44,7 +44,8 @@ export default class LoginComponent extends Component {
       firebase.auth().signInWithEmailAndPassword(email, password)
         .then(()=> {
           this.setState({authenticating: false});
-          this.props.onLoginUser(firebase.auth().currentUser());})
+          this.navigateToNextScreen();
+          })
         .catch((error) => {
           var errorCode = error.code;
           var errorMessage = error.message;
@@ -65,8 +66,12 @@ export default class LoginComponent extends Component {
   renderCurrentState(){
     if(this.state.authenticating){
       return (
-        <View style ={styles.load}>
-          <ActivityIndicator size = 'large'/>
+        <View>
+          <ActivityIndicator
+          style ={styles.loading}
+          size = 'large'
+          color = '#ff7e1c'
+          />
         </View>
       )
     }

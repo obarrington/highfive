@@ -17,7 +17,7 @@ export function loginUser(user) {
     meta:{
       offline: {
         // this effect is effect in highfiveStore
-        effect: { firebaseFn: authenticateUser },
+        effect: {type: 'LOGIN_USER'},
         commit: {type: 'LOGIN_USER_COMMIT'},
         rollback: {type: 'LOGIN_USER_ROLLBACK'}
       }
