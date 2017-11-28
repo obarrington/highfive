@@ -24,7 +24,7 @@ const Base64 = {
   },
 
   atob: (input:string = '') => {
-    let str = input.replace(/=+$-/, '');
+    let str = input.replace(/=+$/, '');
     let output = '';
 
     if (str.length % 4 == 1) {

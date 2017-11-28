@@ -18,7 +18,8 @@ const config = {
   var currentUser = auth.currentUser;
 
 //const Base64 = require('./Base64');
-import Base64 from './Base64';
+//import Base64 from './Base64';
+var base64Img = require('base64-img');
 
 function savePngToFirebase(imagePng){
     imagePng = decodeFromBase64(imagePng);
@@ -27,7 +28,7 @@ function savePngToFirebase(imagePng){
     //Did not like .put as our input is png not a Blob or File
       /*storageRef.child('images/' + imagePng.name).put(imagePng, metadata).then(function(snapshot) {
         console.log('Uploaded', snapshot.totalBytes, 'bytes.');*/
-    storageRef.child('images/' + imagePng.name).putString(imagePng, 'base64').then(function(snapshot) {
+    storageRef.child('images/' + imagePng.name).put(imagePng, 'base64').then(function(snapshot) {
         console.log('Uploaded', snapshot.totalBytes, 'bytes.');
     
         console.log(snapshot.metadata);
@@ -52,9 +53,9 @@ module.exports = {
 }
 
 function decodeFromBase64(imagePng){
-    imagePng = imagePng.replace(/\s/g, '');
-    var stringImg = Base64.atob(imagePng);
-    return Base64.btoa(stringImg);
+    //imagePng = imagePng.replace(/\s/g, '');
+    return base64Img.base64(imagePng);
+    
 }
 
 /*
