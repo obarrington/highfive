@@ -67,9 +67,7 @@ export default class Write extends React.Component {
         <View style={styles.timer}>
           <Text>{this.state.seconds}</Text>
           </View>
-        <View style = {styles.containerA}>
-          <Text style = {styles.headline}>Prompt Goes Here</Text>
-        </View>
+
         <View style = {styles.containerB}>
           <TextInput
             style = {styles.textInput}
@@ -152,13 +150,13 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 25,
     fontWeight: 'bold',
-    fontFamily: 'Verdana',
+    //fontFamily: 'Verdana',
     color: '#fff',
   },
   labelSmall: {
     fontSize: 12,
     fontWeight: 'bold',
-    fontFamily: 'Verdana',
+    //fontFamily: 'Verdana',
     color: '#fff'
   },
 
