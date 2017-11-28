@@ -30,11 +30,9 @@ let styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    backgroundColor: '#FFF',
-    borderBottomWidth: 1,
-    borderColor: '#DDD',
+    backgroundColor: '#8fbc8f',
     paddingVertical: 5,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
 
   option: {
@@ -42,7 +40,8 @@ let styles = StyleSheet.create({
     height: 20,
     borderRadius: 10,
     marginVertical: 5,
-    marginHorizontal: 10
+    marginHorizontal: 10,
+    backgroundColor: '#8fbc8f',
   }
 });
 

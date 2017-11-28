@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, AppRegistry, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
-import store from './src/reduxStore';
-import Login from './src/Login';
-import ScreenSelection from './src/ScreenSelection';
-import ProfileScreen from './src/ProfileScreen';
-import PromptScreen from './src/PromptScreen';
-import WriteScreen from './src/WriteScreen';
-import ActualDrawingScreen from './src/ActualDrawingScreen';
-import EndScreen from './src/EndScreen';
+import store from './reduxStore';
+import Login from './Login';
+import ScreenSelection from './ScreenSelection';
+import ProfileScreen from './ProfileScreen';
+import PromptScreen from './PromptScreen';
+import WriteScreen from './WriteScreen';
+import ActualDrawingScreen from './ActualDrawingScreen';
+import EndScreen from './EndScreen';
 
 import { StackNavigator } from 'react-navigation';
 
@@ -27,7 +27,7 @@ export const AppNavigation = StackNavigator(
   }
 );
 
-class App extends Component {
+export class App extends Component {
 
   render() {
     return (

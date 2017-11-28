@@ -10,6 +10,7 @@ import ColorSelector from './ColorSelector';
 //import ResultImages from './ResultImages';
 import Reaction from './Reaction';
 import Slider from 'react-native-slider';
+import Button from './Button';
 
 var foo = 'loading'
 var DEFAULT_VALUE = 4;
@@ -133,9 +134,9 @@ export default class ActualDrawingScreen extends React.Component {
         onLayout={this._onLayoutContainer}
         style={styles.container}
       >
-
+      <View style={styles.header}>
         <ColorSelector onPress={this._changeColor} />
-
+        </View>
         <View style={styles.container2}>
           <Slider
             value={this.state.value}
@@ -147,11 +148,18 @@ export default class ActualDrawingScreen extends React.Component {
             maximumTrackTintColor='#d3d3d3'
             thumbTintColor={this.state.color}
           />
-          <Text>
+          <Text style={styles.timerStyle}>
             Stroke Width: {this.state.value}
           </Text>
-          <Text style={{alignSelf: 'center'}}>{this.state.seconds}</Text>
+          <Text style={styles.timerStyle}>{this.state.seconds}</Text>
         </View>
+            <View style={styles.promptButton}>
+            <Button
+              label="View Prompt"
+              styles={{button: styles.headerButton, label: styles.buttonText}}
+              onPress={this._onPressButton}
+            />
+            </View>
 
         <View
             onLayout={this._onLayoutContainer}
@@ -169,15 +177,8 @@ export default class ActualDrawingScreen extends React.Component {
             strokeWidth={this.state.value}
             totalOffset={this.state.totalOffset}
           />
-        </View>
-
-        <TouchableHighlight onPress={this._onPressButton} underlayColor
-            ="white">
-            <View style={styles.button}>
-                <Text style={styles.buttonText}>Click For Prompt</Text>
-            </View>
-        </TouchableHighlight>
-      </View>
+          </View>
+ </View>
     );
   }
 }
@@ -192,9 +193,14 @@ let styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'stretch',
-    backgroundColor: 'rgba(0,0,0,0.1)'
+    backgroundColor: '#8fbc8f'
   },
-
+  timerStyle: {
+  color: '#FFF',
+  fontWeight: 'bold',
+  fontFamily: 'Verdana',
+  alignSelf: 'center',
+},
   container2: {
     flex: 1,
     marginLeft: 10,
@@ -209,5 +215,21 @@ let styles = StyleSheet.create({
     position: 'absolute',
     bottom: 5,
     right: 10
+  },
+  headerButton: {
+    backgroundColor: '#34A853',
+    borderWidth: 1,
+    borderRadius: 50,
+    borderColor: '#fff',
+  },
+  buttonText: {
+    fontSize: 12,
+    color: '#FFF',
+    fontWeight: 'bold',
+    fontFamily: 'Verdana',
+  },
+  header: {
+    marginTop: 25,
+    backgroundColor: '#8fbc8f',
   }
 });
