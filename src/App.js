@@ -9,6 +9,7 @@ import PromptScreen from './PromptScreen';
 import WriteScreen from './WriteScreen';
 import ActualDrawingScreen from './ActualDrawingScreen';
 import EndScreen from './EndScreen';
+import CreationScreen from './Login/AccountCreationComponent';
 
 import { StackNavigator } from 'react-navigation';
 
@@ -20,7 +21,8 @@ export const AppNavigation = StackNavigator(
     Prompt: {screen: PromptScreen},
     draw: {screen: ActualDrawingScreen},
     write: {screen: WriteScreen},
-    end: {screen: EndScreen}
+    end: {screen: EndScreen},
+    Creation: {screen: CreationScreen},
   },
   {
     headerMode: 'none'
