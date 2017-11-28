@@ -10,6 +10,9 @@ import ColorSelector from './ColorSelector';
 //import ResultImages from './ResultImages';
 import Reaction from './Reaction';
 import Slider from 'react-native-slider';
+import Button from './Button';
+
+import storage from './storage';
 
 var foo = 'loading'
 var DEFAULT_VALUE = 4;
@@ -73,14 +76,28 @@ export default class ActualDrawingScreen extends React.Component {
       { format: 'png', result: 'base64', quality: 1.0 }
     );
 
+    //send image to firebase
+      console.log('sending image to storage.js');
+      try{
+      storage.uploadToFirebase(result);
+      //Alert.alert("success");
+      } catch (error){
+        console.error(error);
+      };
+      
     const results = this.state.results;
     results.push(result);
 
     this.setState({ results });
   }
+  
+  /*_onSavePress(){
+      console.log('sending image to storage.js');
+      storage.savePngToFirebase(result);
+  }*/ 
 
   _setDonePaths = (donePaths) => {
-    console.log('_setDonePahts');
+    console.log('_setDonePaths');
     console.log(donePaths);
     this.setState({ donePaths });
   }
@@ -155,6 +172,12 @@ export default class ActualDrawingScreen extends React.Component {
                 <Text style={styles.buttonText}>Click For Prompt</Text>
             </View>
         </TouchableHighlight>
+        <Button
+            label = "SAVE"
+            styles = {{button: styles.headerButton, label: styles.labelSmall}}
+            onPress = {this._save}
+                />
+                    
       </View>
     );
   }
@@ -187,5 +210,15 @@ let styles = StyleSheet.create({
     position: 'absolute',
     bottom: 5,
     right: 10
-  }
+  },
+    
+    labelSmall: {
+      fontSize: 12,
+      fontWeight: 'bold',
+      //fontFamily: 'Verdana',
+      color: '#fff'
+    },
+    primaryButton: {
+      backgroundColor: 'transparent',
+    }
 });

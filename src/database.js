@@ -137,6 +137,7 @@ function addDrawing(drawing){
       new_exercise: drawing,
     });
 }
+
 function addWriting(writing){
       var user = getUser();
       var curr = Object.keys(userData.history.write).length;

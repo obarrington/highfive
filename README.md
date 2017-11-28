@@ -4,9 +4,15 @@ Pull from the github repo: http://github.com/obarrington/highfive
 
 Things to install in the app directory in your terminal:
 npm install
+npm install react@16.0.0-alpha.12
+npm install react-native
 npm install create-react-native-app
 npm install react-navigation
 npm install firebase
+npm install react-native-svg
+npm install react-redux
+npm install react-native-slider
+
 
 Download the expo app on your phone. Just search expo in the app/android store. 
 From your terminal, navigate to the location of the directory directory, run npm start & scan the QR code from your expo app on your phone.
