@@ -11,17 +11,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     height: 80
   },
-  loadView:{
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 70
-  },
   scroll: {
     backgroundColor: '#52ffa9',
     padding: 10,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-around'
   },
   label: {
     color: '#0d8898',

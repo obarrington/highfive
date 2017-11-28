@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
-import store from './src/reduxStore';
-import AppNavigationContainer from './src/AppNavigationContainer';
+import store from '../src/reduxStore';
+import AppNavigationContainer from '../src/AppNavigationContainer';
 
 
 class App extends Component {

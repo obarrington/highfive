@@ -40,11 +40,11 @@ submitNewUser = () => {
 }
 
 renderCurrState(){
-  if(!this.state.loading){
+  if(this.state.loading){
     return (
       <View>
         <ActivityIndicator
-        style = {styles.load}
+        style = {styles.loading}
         color = '#ff7e1c'
         size = "large"
         />
@@ -52,7 +52,7 @@ renderCurrState(){
     )
   }
   return(
-    <ScrollView style={styles.scroll}>
+    <ScrollView>
       <Container>
         <Text style={styles.textLabel}>Email</Text>
         <TextInput
@@ -86,7 +86,7 @@ renderCurrState(){
 
   render() {
     return (
-      <View style ={styles.loadView}>
+      <View style={styles.scroll}>
       {this.renderCurrState()}
       </View>
   );

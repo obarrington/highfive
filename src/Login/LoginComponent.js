@@ -44,7 +44,7 @@ export default class LoginComponent extends Component {
       firebase.auth().signInWithEmailAndPassword(email, password)
         .then(()=> {
           this.setState({authenticating: false});
-          this.navigateToNextScreen();
+          this.navigateToNextScreen()
           })
         .catch((error) => {
           var errorCode = error.code;
@@ -76,7 +76,7 @@ export default class LoginComponent extends Component {
       )
     }
       return (
-        <ScrollView style={styles.scroll}>
+        <ScrollView>
         <Container>
           <Text style={styles.heading}>HIGH FIVE</Text>
         </Container>
@@ -116,20 +116,6 @@ export default class LoginComponent extends Component {
         </Container>
         <Container>
           <Button
-                label="f    Login with FaceBook"
-                styles={{button: styles.facebookVerification, label: styles.buttonWhiteText}}
-                onPress={this.onButtonPress}
-          />
-        </Container>
-        <Container>
-          <Button
-                label="g+    Login with Google"
-                styles={{button: styles.googleVerification, label: styles.buttonWhiteText}}
-                onPress={this.onButtonPress}
-          />
-        </Container>
-        <Container>
-          <Button
                 label="Continue As Guest"
                 styles={{button: styles.guestVerification, label: styles.buttonWhiteText}}
                 onPress={this.props.onLoginAsGuest}
@@ -142,7 +128,7 @@ export default class LoginComponent extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.scroll}>
         {this.renderCurrentState()}
       </View>
     )
