@@ -107,19 +107,42 @@ async function getPrompt(type) {
     console.log(error.message);
   }
 }
-var currUser = firebase.auth().currentUser;
+
 
 
 function getUser() {
-  console.log(currUser.uid);
+  var currUser = firebaseApp.auth().currentUser;
+  console.log('here in', currUser.uid);
   if (currUser != null) {
     console.log("got user");
-    var user = {
-      name: currUser.displayName,
-      email: currUser.email,
-      uid: currUser.uid,
-    };
-  return ref.child("Users").child(user.uid);
+    var userRef = firebaseApp.database().ref("Users");
+    var users = [];
+  userRef.on('value', (dataSnapshot) => {
+  //  THE ISSUE IS HERE
+    dataSnapshot.forEach((child) => {
+      users.push({
+        email: child.val().email,
+        uid: child.val().uid,
+        history: child.val().history
+      });
+    });
+  });
+    var user = {};
+    console.log(users[0]);
+    for(var i = 0; i < users.length; i++){
+      console.log('uid', users[i].uid);
+      if(currUser.uid == users[i].uid){
+        user = {
+          email: users[i].email,
+          uid: users[i].uid,
+          history: users[i].history
+        };
+        console.log('final', user);
+        return user;
+      }
+    }
+
+  return user;
   }
 }
 
@@ -146,13 +169,14 @@ module.exports = {
 
   },
   getUserData: function(){
+    console.log('temp');
     return getUser();
   },
 }
 
 //Authentication
 
-var currUser = firebase.auth().currentUser;
+/*var currUser = firebase.auth().currentUser;
 
 function getUser(){
   if (currUser != null) {
@@ -178,4 +202,4 @@ function addWriting(writing){
       ref.child("users").child(user.uid).set({
           new_exercise: writing,
         });
-}
+}*/

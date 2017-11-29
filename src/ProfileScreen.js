@@ -8,9 +8,8 @@ const database = require('./database');
 export default class ScreenSelection extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: database.getUserData(),
-    };
+    var test = '';
+    this.getUserData();
     this.back = this.back.bind(this);
     this.logout = this.logout.bind(this);
 
@@ -18,7 +17,13 @@ export default class ScreenSelection extends Component {
 
   getUserData() {
     var user = {};
-    user = database.getUser();
+    user = database.getUserData();
+    console.log('here in prof', user);
+    this.setState({
+      email: user.email,
+      history: user.history
+
+    });
   }  // The user's ID, unique to the Firebase project. Do NOT use
   // this value to authenticate with your backend server, if
   // you have one. Use User.getToken() instead.
@@ -55,10 +60,10 @@ export default class ScreenSelection extends Component {
         />
       </View>
       <View style={styles.profileContainer}>
-        <Text style={styles.label}>this.state.user.name</Text>
+        <Text style={styles.label}>{this.state.user.email}</Text>
       </View>
       <View style={styles.historyContainer}>
-        <Text style={styles.label}>this.state.user.history</Text>
+        <Text style={styles.label}>{this.state.user.history}</Text>
       </View>
     </View>
   );

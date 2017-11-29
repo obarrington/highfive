@@ -5,10 +5,10 @@ import Container from './Container';
 import  ScreenSelection  from './ScreenSelection';
 import { StackNavigator } from 'react-navigation';
 import App from './App';
+import database from './database';
 /*const SimpleApp = StackNavigator({
   Selection: { screen: ScreenSelection },
 });*/
-
 const firebase = require('firebase');
 export default class Login extends Component {
   constructor(props) {
@@ -26,23 +26,33 @@ export default class Login extends Component {
       navigate('Selection');
   };
   createAccount(){
-    console.log("email is," + this.state.email);
+    console.log("email is " + this.state.email);
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
   // Handle Errors here.
   var errorCode = error.code;
   var errorMessage = error.message;
   // ...
   });
+  console.log(firebase.auth().currentUser);
+  var userRef = firebase.database().ref("Users");
+  userRef.push({
+    uid: firebase.auth().currentUser.uid,
+    email: this.state.email,
+  });
+
+
   const { navigate } = this.props.navigation;
   navigate('Selection');
   };
   logIn(){
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
   // Handle Errors here.
+
   var errorCode = error.code;
   var errorMessage = error.message;
   // ...
   });
+  console.log(firebase.auth().currentUser);
   const { navigate } = this.props.navigation;
   navigate('Selection');
   };
