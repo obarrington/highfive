@@ -14,9 +14,6 @@ import Settings from './Settings';
 import HandDrawScreen from './HandDrawScreen';
 import Camera from './camera';
 
-import { connect } from 'react-redux'
-import {turnOn, turnOff} from './actions/SettingsActions';
-
 import { StackNavigator } from 'react-navigation';
 
 export const AppNavigation = StackNavigator(

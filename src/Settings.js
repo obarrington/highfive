@@ -4,8 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
 import App from './App';
-import { connect } from 'react-redux'
-import {turnOn, turnOff} from './actions/SettingsActions';
+
 const settings = require('./settingSettings');
 
 
