@@ -13,6 +13,8 @@ import Slider from 'react-native-slider';
 import Button from './Button';
 
 import storage from './storage';
+var RNFileSys = require('react-native-fs');
+//import RNFSPackage from 'com.rnfs.RNFSPackage'; 
 
 var foo = 'loading'
 var DEFAULT_VALUE = 4;
@@ -73,13 +75,28 @@ export default class ActualDrawingScreen extends React.Component {
   _save = async () => {
     const result = await takeSnapshotAsync(
       this._signatureView,
-      { format: 'png', result: 'base64', quality: 1.0 }
+      { format: 'png', result: 'file', quality: 1.0 }
     );
+     
+    //Make the PNG a File  
+      
+    // create a path you want to write to
+    var path = RNFileSys.DocumentDirectoryPath + '/test.txt';
+
+    // write the file
+    var file = RNFileSys.writeFile(path, result, 'utf8')
+        .then((success) => {
+        console.log('FILE WRITTEN!');
+    })
+        .catch((err) => {
+        console.log(err.message);
+    });
+      
 
     //send image to firebase
       console.log('sending image to storage.js');
       try{
-      storage.uploadToFirebase(result);
+      storage.uploadToFirebase(file);
       //Alert.alert("success");
       } catch (error){
         console.error(error);

@@ -1,5 +1,6 @@
 import ActualDrawingScreen from './ActualDrawingScreen';
 const firebase = require("firebase");
+const RNFileSys = require('react-native-fs');
 
 const config = {
     apiKey: "AIzaSyCaRBOA7Ox_l2EaEZvew57qD7deHlQSb1I",
@@ -19,19 +20,21 @@ const config = {
 
 //const Base64 = require('./Base64');
 //import Base64 from './Base64';
-var base64Img = require('base64-img');
+//var base64Img = require('base64-img');
 
-function savePngToFirebase(imagePng){
-    imagePng = decodeFromBase64(imagePng);
+function savePngToFirebase(file){
+    console.log({file});
+    
+    //imagePng = decodeFromBase64(imagePng);
     
     // [START oncomplete]
     //Did not like .put as our input is png not a Blob or File
       /*storageRef.child('images/' + imagePng.name).put(imagePng, metadata).then(function(snapshot) {
         console.log('Uploaded', snapshot.totalBytes, 'bytes.');*/
-    storageRef.child('images/' + imagePng.name).put(imagePng, 'base64').then(function(snapshot) {
+    storageRef.child('images/' + file.name).put(file).then(function(snapshot) {
         console.log('Uploaded', snapshot.totalBytes, 'bytes.');
     
-        console.log(snapshot.metadata);
+        //console.log(snapshot.metadata);
         //var url = snapshot.downloadURL;
         //console.log('File available at', url);
         // [START_EXCLUDE]
@@ -47,15 +50,9 @@ function savePngToFirebase(imagePng){
 }
 
 module.exports = {
-    uploadToFirebase: function(imagePng){
-        return savePngToFirebase(imagePng);
+    uploadToFirebase: function(file){
+        return savePngToFirebase(file);
     }
-}
-
-function decodeFromBase64(imagePng){
-    //imagePng = imagePng.replace(/\s/g, '');
-    return base64Img.base64(imagePng);
-    
 }
 
 /*
