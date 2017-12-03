@@ -35,18 +35,13 @@ export default class ScreenSelection extends Component {
     }
 
     render() {
-
+        //there is certain way of Url format for sharing. - look at the following link
+        //https://github.com/EstebanFuentealba/react-native-share
+        //for a base 64 image file with png file extension, url: "data:image/png;base64,<base64_data>"
         let shareOptions = {
             title: "React Native",
             message: "Hola mundo",
             url: "http://facebook.github.io/react-native/",
-            subject: "Share Link" //  for email
-        };
-
-        let shareImageBase64 = {
-            title: "React Native",
-            message: "Hola mundo",
-            url: REACT_ICON,
             subject: "Share Link" //  for email
         };
 
@@ -60,6 +55,12 @@ export default class ScreenSelection extends Component {
                         styles={{button: styles.button, label: styles.labelSmall}}
                         onPress={this.returnToSelection}
                     />
+
+                    <TouchableOpacity onPress={()=>{Share.open(shareOptions);}}>
+                        <View style={styles.instructions}>
+                            <Text>Simple Share</Text>
+                        </View>
+                    </TouchableOpacity>
 
                     <TouchableOpacity onPress={this.onOpen.bind(this)}>
                         <View style={styles.instructions}>
