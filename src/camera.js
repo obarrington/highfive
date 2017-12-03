@@ -18,6 +18,7 @@ import {
   Vibration,
 } from 'react-native';
 import GalleryScreen from './GalleryScreen';
+import { StackNavigator } from 'react-navigation';
 
 const flashModeOrder = {
   off: 'on',
@@ -36,6 +37,14 @@ const wbOrder = {
 };
 
 export default class CameraScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+
+
+    this.end = this.end.bind(this);
+  }
   state = {
     flash: 'off',
     zoom: 0,
@@ -51,11 +60,11 @@ export default class CameraScreen extends React.Component {
   };
 
   componentDidMount() {
-    FileSystem.makeDirectoryAsync(
-      FileSystem.documentDirectory + 'photos'
-    ).catch(e => {
-      console.log(e, 'Directory exists');
-    });
+    // FileSystem.makeDirectoryAsync(
+    //   FileSystem.documentDirectory + 'photos'
+    // ).catch(e => {
+    //   console.log(e, 'Directory exists');
+    // });
   }
 
   getRatios = async function() {
@@ -63,11 +72,11 @@ export default class CameraScreen extends React.Component {
     return ratios;
   };
 
-  toggleView() {
-    this.setState({
-      showGallery: !this.state.showGallery,
-    });
-  }
+  // toggleView() {
+  //   this.setState({
+  //     showGallery: !this.state.showGallery,
+  //   });
+  // }
 
   toggleFacing() {
     this.setState({
@@ -135,9 +144,14 @@ export default class CameraScreen extends React.Component {
     }
   };
 
-  renderGallery() {
-    return <GalleryScreen onPress={this.toggleView.bind(this)} />;
-  }
+  // renderGallery() {
+  //   return <GalleryScreen onPress={this.toggleView.bind(this)} />;
+  // }
+  end() {
+    const { navigate } = this.props.navigation;
+
+    navigate('end');
+  };
 
   renderCamera() {
     return (
@@ -235,18 +249,18 @@ export default class CameraScreen extends React.Component {
               styles.galleryButton,
               { flex: 0.25, alignSelf: 'flex-end' },
             ]}
-            onPress={this.toggleView.bind(this)}>
-            <Text style={styles.flipText}> Gallery </Text>
+            onPress={this.end}>
+            <Text style={styles.flipText}> To End Screen </Text>
           </TouchableOpacity>
         </View>
       </Camera>
     );
   }
-
+// {this.state.showGallery ? this.end() : this.renderCamera()}
   render() {
     return (
       <View style={styles.container}>
-        {this.state.showGallery ? this.renderGallery() : this.renderCamera()}
+        {this.state.showGallery ? this.end() : this.renderCamera()}
       </View>
     );
   }
