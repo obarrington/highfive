@@ -10,6 +10,12 @@ import WriteScreen from './WriteScreen';
 import ActualDrawingScreen from './ActualDrawingScreen';
 import EndScreen from './EndScreen';
 import CreationScreen from './Login/AccountCreationComponent';
+import Settings from './Settings';
+import HandDrawScreen from './HandDrawScreen';
+import Camera from './camera';
+
+import { connect } from 'react-redux'
+import {turnOn, turnOff} from './actions/SettingsActions';
 
 import { StackNavigator } from 'react-navigation';
 
@@ -23,6 +29,9 @@ export const AppNavigation = StackNavigator(
     write: {screen: WriteScreen},
     end: {screen: EndScreen},
     Creation: {screen: CreationScreen},
+    Settings: {screen: Settings},
+    HandDraw: {screen: HandDrawScreen},
+    camera: {screen: Camera},
   },
   {
     headerMode: 'none'
@@ -48,6 +57,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
 
 AppRegistry.registerComponent('App', () => App)
 
