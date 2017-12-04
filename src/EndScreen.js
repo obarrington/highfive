@@ -4,6 +4,10 @@ import { StyleSheet, Text, View, AppRegistry, TouchableOpacity, Clipboard, Toast
 import { StackNavigator, NavigationActions } from 'react-navigation';
 import Share, {ShareSheet, Button} from 'react-native-share';
 
+//Do...
+//npm install react-native-share --save
+//npm install rnpm -g
+//rnpm link react-native-share
 
 export default class EndScreen extends Component {
     constructor(props) {
