@@ -14,7 +14,7 @@ export default class PromptScreen extends Component {
     super(props);
     this.state = {
       prompt: "loading...",
-      seconds: 120
+      seconds: 10
 
     };
     this.promptType = this.props.navigation.state.params.type;
@@ -47,7 +47,7 @@ export default class PromptScreen extends Component {
     }, 1000);
 
     this.setState({timer: timer});
-    setTimeout(this.nextScreen, 126000);
+    setTimeout(this.nextScreen, 10000);
   }
 
   componentWillUnmount() {

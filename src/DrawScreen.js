@@ -52,6 +52,7 @@ export default class DigitalTouch extends Component {
 
         // gestureState.d{x,y} will be set to zero now
         console.log("Touch");
+        return true;
       },
       onPanResponderMove: (evt, gestureState) => {
         console.log('onMove');
@@ -68,6 +69,7 @@ export default class DigitalTouch extends Component {
           currentPoints: newCurrentPoints,
           currentMax: this.state.currentMax
         });
+        return true;
 
       },
       onPanResponderTerminationRequest: (evt, gestureState) => true,
@@ -133,10 +135,12 @@ export default class DigitalTouch extends Component {
         this.props.setDoneCircles(newDot);
         // The user has released all touches while this view is the
         // responder. This typically means a gesture has succeeded
+        return true;
       },
       onPanResponderTerminate: (evt, gestureState) => {
         // Another component has become the responder, so this gesture
         // should be cancelled
+        return true;
       },
       onShouldBlockNativeResponder: (evt, gestureState) => {
         // Returns whether this component should block native components from becoming the JS
