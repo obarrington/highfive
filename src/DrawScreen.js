@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, PanResponder } from 'react-native';
+import { Text, View, StyleSheet, PanResponder, Platform } from 'react-native';
 import { Constants } from 'expo';
 import Reaction from './Reaction';
 import Svg, { G, Path, Circle } from 'react-native-svg';
@@ -30,8 +30,18 @@ export default class DigitalTouch extends Component {
 
       onPanResponderGrant: (evt, gestureState) => {
         console.log('onTouch');
-        let [x, y] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
-        //let [x, y] = [gestureState.moveX, gestureState.moveY];
+        // if (Platform.OS === 'ios') {
+        //   console.log([x, y]);
+        //   let [x, y] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
+        // } else {
+        //   console.log([x, y]);
+        //   let [x, y] = [evt.nativeEvent.locationX + gestureState.dx, evt.nativeEvent.locationY + gestureState.dy];
+        // }
+        // let [x, y] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
+        // let [x, y] = [evt.nativeEvent.locationX + gestureState.dx, evt.nativeEvent.locationY + gestureState.dy];
+        // let [x, y] = [gestureState.moveX, gestureState.moveY];
+        this.sendOffset(evt.nativeEvent.pageX-evt.nativeEvent.locationX, evt.nativeEvent.pageY-evt.nativeEvent.locationY);
+        let [x, y] = [evt.nativeEvent.pageX, evt.nativeEvent.pageY];
         console.log([x, y]);
         const newCurrentPoints = this.state.currentPoints;
         // const newCirclePointX = this.state.circlePointX;
@@ -42,8 +52,8 @@ export default class DigitalTouch extends Component {
           donePaths: this.props.donePaths,
           doneCircle: this.props.doneCircle,
           currentPoints: newCurrentPoints,
-          circlePointX: x,
-          circlePointY: y,
+          circlePointX: x - (evt.nativeEvent.pageX-evt.nativeEvent.locationX),
+          circlePointY: y - (evt.nativeEvent.pageY-evt.nativeEvent.locationY),
           currentMax: this.state.currentMax
         });
         //console.log(this.props.donePaths);
@@ -57,8 +67,14 @@ export default class DigitalTouch extends Component {
       onPanResponderMove: (evt, gestureState) => {
         console.log('onMove');
         //let [x, y] = [evt.nativeEvent.pageX, evt.nativeEvent.pageY];
-        //let [x, y] = [gestureState.moveX, gestureState.moveY];
-        let [x, y] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
+        let [x, y] = [gestureState.moveX, gestureState.moveY];
+        // let [x, y] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
+        // let [x, y] = [evt.nativeEvent.locationX + gestureState.dx, evt.nativeEvent.locationY + gestureState.dy];
+        // if (Platform.OS === 'ios') {
+        //   let [x, y] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
+        // } else {
+        //   let [x, y] = [evt.nativeEvent.locationX + gestureState.dx, evt.nativeEvent.locationY + gestureState.dy];
+        // }
         console.log([x, y]);
         const newCurrentPoints = this.state.currentPoints;
         newCurrentPoints.push({ x, y });
@@ -79,11 +95,18 @@ export default class DigitalTouch extends Component {
         console.log(gestureState.moveX, gestureState.moveY);
         const newPaths = this.props.donePaths;
         const newDot = this.props.doneCircle;
-        let [startX, startY] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
+        // let [startX, startY] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
+        // let [startX, startY] = [evt.nativeEvent.locationX + gestureState.dx, evt.nativeEvent.locationY + gestureState.dy];
+        let [startX, startY] = [gestureState.moveX, gestureState.moveY];
+        // if (Platform.OS === 'ios') {
+        //   let [x, y] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
+        // } else {
+        //   let [x, y] = [evt.nativeEvent.locationX + gestureState.dx, evt.nativeEvent.locationY + gestureState.dy];
+        // }
         if (this.state.currentPoints.length > 0) {
           var isPoint = true;
-          const newCirclePointX = this.state.circlePointX;
-          const newCirclePointY = this.state.circlePointX;
+          // const newCirclePointX = this.state.circlePointX;
+          // const newCirclePointY = this.state.circlePointX;
           //newCirclePoint.push({ startX, startY });
           this.state.currentPoints.forEach((point) => {
             if (startX != point.x || startY != point.y) {
@@ -127,8 +150,6 @@ export default class DigitalTouch extends Component {
         this.setState({
           currentPoints: [],
           currentMax: this.state.currentMax + 1,
-          circlePointX: 0,
-          circlePointY: 0
         });
 
         this.props.setDonePaths(newPaths);
@@ -149,16 +170,20 @@ export default class DigitalTouch extends Component {
       },
     });
   }
-  _onLayoutContainer = (e) => {
-    this.state.reaction.setOffset(e.nativeEvent.layout,this.props.totalOffset);
-    //this.state.reaction.setOffset(0);
+
+  sendOffset(xOff, yOff) {
+    this.state.reaction.setOffset(xOff, yOff)
   }
+  // _onLayoutContainer = (e) => {
+  //   this.state.reaction.setOffset(e.nativeEvent.layout,this.props.totalOffset);
+  //   //this.state.reaction.setOffset(0);
+  // }
 
   // onLayout={this._onLayoutContainer}
   render() {
     return (
       <View
-        onLayout={this._onLayoutContainer}
+
         style={[
           styles.drawContainer,
           this.props.containerStyle,
