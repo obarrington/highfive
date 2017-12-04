@@ -12,6 +12,8 @@ import EndScreen from './src/EndScreen';
 
 import { StackNavigator } from 'react-navigation';
 
+import RNFSManager from 'react-native-fs';
+
 export const AppNavigation = StackNavigator(
   {
     Main: {screen: Login},

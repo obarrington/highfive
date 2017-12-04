@@ -1,4 +1,5 @@
 import ActualDrawingScreen from './ActualDrawingScreen';
+import RNFSManager from 'react-native-fs';
 const firebase = require("firebase");
 const RNFileSys = require('react-native-fs');
 
