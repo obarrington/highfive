@@ -153,7 +153,8 @@ export default class DigitalTouch extends Component {
         });
 
         this.props.setDonePaths(newPaths);
-        this.props.setDoneCircles(newDot);
+        this.props.setDonePaths(newDot);  //TODO: Maybe fix
+        //this.props.setDoneCircles(newDot);
         // The user has released all touches while this view is the
         // responder. This typically means a gesture has succeeded
         return true;

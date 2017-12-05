@@ -172,7 +172,7 @@ export default class ActualDrawingScreen extends React.Component {
             width={Dimensions.get('window').width}
             height={Dimensions.get('window').width+50}
             color={this.state.color}
-            strokeWidth={this.state.value}
+            strokeWidth={Number(this.state.value)}
             totalOffset={this.state.totalOffset}
           />
           </View>
@@ -196,7 +196,7 @@ let styles = StyleSheet.create({
   timerStyle: {
   color: '#FFF',
   fontWeight: 'bold',
-  fontFamily: 'Verdana',
+  //fontFamily: 'Verdana',
   alignSelf: 'center',
 },
   container2: {
@@ -224,7 +224,7 @@ let styles = StyleSheet.create({
     fontSize: 12,
     color: '#FFF',
     fontWeight: 'bold',
-    fontFamily: 'Verdana',
+    //fontFamily: 'Verdana',
   },
   header: {
     marginTop: 25,
