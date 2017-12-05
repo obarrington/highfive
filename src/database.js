@@ -108,43 +108,60 @@ async function getPrompt(type) {
   }
 }
 
-
-
-function getUser() {
-  var currUser = firebaseApp.auth().currentUser;
-  console.log('here in', currUser.uid);
-  if (currUser != null) {
-    console.log("got user");
-    var userRef = firebaseApp.database().ref("Users");
-    var users = [];
-  userRef.on('value', (dataSnapshot) => {
-  //  THE ISSUE IS HERE
-    dataSnapshot.forEach((child) => {
-      users.push({
-        email: child.val().email,
-        uid: child.val().uid,
-        history: child.val().history
-      });
-    });
-  });
-    var user = {};
-    console.log(users[0]);
-    for(var i = 0; i < users.length; i++){
-      console.log('uid', users[i].uid);
-      if(currUser.uid == users[i].uid){
-        user = {
-          email: users[i].email,
-          uid: users[i].uid,
-          history: users[i].history
-        };
-        console.log('final', user);
-        return user;
-      }
-    }
-
-  return user;
+async function getUser() {
+  try {
+    const user = await genUser();
+    return user;
+  }
+  catch(error){
+    cosole.log(error.message);
   }
 }
+
+function genUser() {
+  return new Promise(
+    (resolve, reject) => {
+
+  var currUser = firebaseApp.auth().currentUser;
+  if (currUser != null) {
+    var userRef = firebaseApp.database().ref("Users");
+    var users = [];
+    var user = {};
+    var key;
+    var childData;
+  userRef.once("value")
+  .then(function(snapshot) {
+  //  THE ISSUE IS HERE
+    snapshot.forEach(function(childSnap) {
+      users.push({
+        key : childSnap.key,
+        childData : childSnap.val()
+      });
+    });
+
+    for(var i = 0; i < users.length; i++){
+      if(currUser.uid == users[i].childData.uid){
+
+        user = {
+          email: users[i].childData.email,
+          uid: users[i].childData.uid
+          //history: users[i].childData.history
+        };
+        console.log(user);
+      //  return user;
+      }
+    }
+    });
+  }
+    waitForIt(500)
+      .then(function () {
+        resolve(user);
+      });
+   }
+  );
+
+}
+
 
 function addDrawing(drawing){
     var user = getUser();

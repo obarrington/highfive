@@ -9,6 +9,9 @@ export default class ScreenSelection extends Component {
   constructor(props) {
     super(props);
     var test = '';
+    this.state = {
+      user: {},
+    }
     this.getUserData();
     this.back = this.back.bind(this);
     this.logout = this.logout.bind(this);
@@ -17,13 +20,16 @@ export default class ScreenSelection extends Component {
 
   getUserData() {
     var user = {};
-    user = database.getUserData();
+    user = database.getUserData().then(curr => {
+      user = curr;
+      this.setState({
+        user : user
+      });
+        console.log(this.state.user, "state");
+    });;
     console.log('here in prof', user);
-    this.setState({
-      email: user.email,
-      history: user.history
 
-    });
+
   }  // The user's ID, unique to the Firebase project. Do NOT use
   // this value to authenticate with your backend server, if
   // you have one. Use User.getToken() instead.
@@ -63,7 +69,7 @@ export default class ScreenSelection extends Component {
         <Text style={styles.label}>{this.state.user.email}</Text>
       </View>
       <View style={styles.historyContainer}>
-        <Text style={styles.label}>{this.state.user.history}</Text>
+        <Text style={styles.label}>"helloo!"</Text>
       </View>
     </View>
   );
