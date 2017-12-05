@@ -4,7 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
 
-
+const firebase = require('firebase');
 export default class ScreenSelection extends Component {
   constructor(props) {
     super(props);

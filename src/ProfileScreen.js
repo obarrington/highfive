@@ -25,9 +25,7 @@ export default class ScreenSelection extends Component {
       this.setState({
         user : user
       });
-        console.log(this.state.user, "state");
     });;
-    console.log('here in prof', user);
 
 
   }  // The user's ID, unique to the Firebase project. Do NOT use
