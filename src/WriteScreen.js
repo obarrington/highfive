@@ -6,14 +6,14 @@ import { AppRegistry, StyleSheet, Text, View, TextInput, Alert } from 'react-nat
 import { StackNavigator } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
-import App from '../App';
+import App from './App';
 
 
 export default class Write extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      text: 'Write Answer to the Prompt',
+      text: '',
       seconds: 120
     };
     this.prompt = this.props.navigation.state.params.prompt;
@@ -65,21 +65,25 @@ export default class Write extends React.Component {
           />
         </View>
         <View style={styles.timer}>
-          <Text>{this.state.seconds}</Text>
+          <Text style={styles.timerStyle}>{this.state.seconds}</Text>
           </View>
-
+        <View style = {styles.containerA}>
+          <Text style = {styles.headline}>Writing</Text>
+        </View>
         <View style = {styles.containerB}>
           <TextInput
             style = {styles.textInput}
             onChangeText = {(text) => this.setState({text})}
             value = {this.state.text}
+            placeholder="Start writing here!"
+            multiline= {true}
           />
         </View>
         <View style={styles.footer}>
           <Container>
             <Button
               label="Continue"
-              styles={{button: styles.primaryButton, label: styles.buttonWhiteText}}
+              styles={{button: styles.headerButton, label: styles.buttonWhiteText}}
               onPress={this.nextScreen}
             />
           </Container>
@@ -91,7 +95,12 @@ export default class Write extends React.Component {
 
 const styles = StyleSheet.create({
   timer: {
-    marginTop: 35
+    marginTop: 35,
+  },
+  timerStyle: {
+    color: '#FFF',
+    fontWeight: 'bold',
+    fontFamily: 'Verdana',
   },
   container: {
     flex: 1,
@@ -102,31 +111,38 @@ const styles = StyleSheet.create({
   containerA: {
     flex: 1,
     backgroundColor: '#8fbc8f',
-    alignItems: 'center',
-    justifyContent: 'center',
+  //  alignItems: 'center',
+  //  justifyContent: 'center',
   },
   containerB: {
     flex: 3,
     backgroundColor: '#8fbc8f',
-    alignItems: 'center',
-    justifyContent: 'center',
+  //  alignItems: 'center',
+  //  justifyContent: 'center',
   },
   textInput: {
     height: 300,
     width: 250,
-    borderColor: 'gray',
-    borderWidth: 1,
-    alignSelf: 'center',
+    position: 'relative',
+    fontSize: 20,
+    color: '#FFF',
+    fontWeight: 'bold',
+    fontFamily: 'Verdana',
+
+  //  alignItems: 'top',
+  //  justifyContent: 'top',
   },
   headline: {
-    fontSize: 20,
+    fontSize: 40,
     textAlign: 'center',
     backgroundColor: 'rgba(0,0,0,0)',
-    color: 'black',
+    color: '#FFF',
   },
   buttonWhiteText: {
     fontSize: 20,
     color: '#FFF',
+    fontWeight: 'bold',
+    fontFamily: 'Verdana',
   },
   primaryButton: {
     backgroundColor: '#34A853'
@@ -150,13 +166,13 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 25,
     fontWeight: 'bold',
-    //fontFamily: 'Verdana',
+    fontFamily: 'Verdana',
     color: '#fff',
   },
   labelSmall: {
     fontSize: 12,
     fontWeight: 'bold',
-    //fontFamily: 'Verdana',
+    fontFamily: 'Verdana',
     color: '#fff'
   },
 
