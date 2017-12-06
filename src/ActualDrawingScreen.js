@@ -75,7 +75,7 @@ export default class ActualDrawingScreen extends React.Component {
   _save = async () => {
     const result = await takeSnapshotAsync(
       this._signatureView,
-      { format: 'png', result: 'file', quality: 1.0 }
+      { format: 'png', result: 'base64', quality: 1.0 }
     );
      
     //Make the PNG a File  

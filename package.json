@@ -32,6 +32,6 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-offline": "^2.0.0",
-    "react-native-fs":"2.8.5"
+    "react-native-fs":"2.0.1-rc.2"
   }
 }
