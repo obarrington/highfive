@@ -14,7 +14,8 @@ export default class Write extends React.Component {
     super(props);
     this.state = {
       text: '',
-      seconds: 120
+      seconds: 120,
+      timer: null
     };
     this.prompt = this.props.navigation.state.params.prompt;
 
@@ -43,10 +44,13 @@ export default class Write extends React.Component {
       this.setState(previousState => {
         return { seconds: previousState.seconds - 1 };
       });
+      if(this.state.seconds <= 0) {
+        clearInterval(this.state.timer);
+        this.nextScreen();
+      }
     }, 1000);
 
     this.setState({timer: timer});
-    setTimeout(this.nextScreen, 126000);
   }
 
   componentWillUnmount() {
@@ -54,6 +58,12 @@ export default class Write extends React.Component {
   }
 
   render() {
+
+    var minutes = Math.floor(this.state.seconds / 60);
+    var seconds = this.state.seconds % 60;
+    if(seconds < 10) {
+      seconds = "0" + seconds;
+    }
 
     return (
       <View style={styles.container}>
@@ -65,7 +75,7 @@ export default class Write extends React.Component {
           />
         </View>
         <View style={styles.timer}>
-          <Text style={styles.timerStyle}>{this.state.seconds}</Text>
+          <Text style={styles.timerStyle}>{minutes}:{seconds}</Text>
           </View>
         <View style = {styles.containerA}>
           <Text style = {styles.headline}>Writing</Text>
