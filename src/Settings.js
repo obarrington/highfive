@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
 import App from './App';
+import Slider from 'react-native-slider';
 
 const settings = require('./settingSettings');
 
@@ -12,21 +13,31 @@ export default class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      timer: 120
+      timer: 120,
+      handDraw: false
     };
 
     //this.handDraw = this.handDraw.bind(this);
     this.back = this.back.bind(this);
+    this.handDraw = this.handDraw.bind(this);
   }
 
   handDraw() {
     settings.toggleHandDraw();
-    console.log(settings.getMeHandDraw());
+    this.setState({handDraw: !this.state.handDraw});
   }
 
   back() {
     const { goBack } = this.props.navigation;
     goBack();
+  }
+
+  componentWillMount() {
+    this.setState({timer: settings.getTimer(), handDraw: settings.getMeHandDraw()})
+  }
+
+  componentWillUnmount() {
+    settings.setTimer(this.state.timer);
   }
 
   render() {
@@ -35,8 +46,15 @@ export default class Settings extends Component {
     if(seconds < 10) {
       seconds = "0" + seconds;
     }
+    var handDraw = "";
+    if(this.state.handDraw) {
+      handDraw = "on"
+    }
+    else {
+      handDraw = "off"
+    }
     return (
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, backgroundColor: '#75c68b'}}>
         <View style={styles.headerContainer}>
           <Button
             label="Back"
@@ -45,8 +63,8 @@ export default class Settings extends Component {
           />
         </View>
         <View style={styles.settingsContainer}>
-          <Text style={styles.labelSmall}>Timer: {minutes}:{seconds} </Text>
           <View style={styles.slider}>
+            <Text style={styles.labelSmall}>Timer: {minutes}:{seconds} </Text>
             <Slider
               value={this.state.timer}
               onValueChange={value => this.setState({ timer: value })}
@@ -59,7 +77,7 @@ export default class Settings extends Component {
             />
           </View>
           <Button
-            label={'Toggle Hand Drawing'}
+            label={'Hand Drawing: ' + handDraw}
             styles={{button: styles.headerButton, label: styles.labelSmall}}
             onPress={this.handDraw}
           />
@@ -72,8 +90,10 @@ export default class Settings extends Component {
 
 const styles = StyleSheet.create({
   settingsContainer: {
-    flex: 1,
+    flex: .3,
     backgroundColor: '#75c68b',
+    justifyContent: 'space-between',
+    marginTop: 100
   },
   slider: {
     alignItems: 'stretch',
@@ -96,11 +116,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   headerContainer: {
-    flex: 0.18,
+    flex: 0.16,
     backgroundColor: '#75c68b',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-end',
+    alignItems: 'flex-start',
+    marginTop: 30
   },
   headerButton: {
     backgroundColor: '#34A853',

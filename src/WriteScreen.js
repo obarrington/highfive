@@ -8,13 +8,14 @@ import Container from './Container';
 import Button from './Button';
 import App from './App';
 
+const settings = require('./settingSettings');
 
 export default class Write extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       text: '',
-      seconds: 120,
+      seconds: settings.getTimer(),
       timer: null
     };
     this.prompt = this.props.navigation.state.params.prompt;
