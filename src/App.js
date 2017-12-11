@@ -13,6 +13,7 @@ import CreationScreen from './Login/AccountCreationComponent';
 import Settings from './Settings';
 import HandDrawScreen from './HandDrawScreen';
 import Camera from './camera';
+import ConfirmPic from './ConfirmPic';
 
 import { StackNavigator } from 'react-navigation';
 
@@ -29,6 +30,7 @@ export const AppNavigation = StackNavigator(
     Settings: {screen: Settings},
     HandDraw: {screen: HandDrawScreen},
     camera: {screen: Camera},
+    ConfirmPic: {screen: ConfirmPic},
   },
   {
     headerMode: 'none'
