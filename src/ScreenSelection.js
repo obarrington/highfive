@@ -40,14 +40,23 @@ export default class ScreenSelection extends Component {
   };
 
   render() {
+    let button = null;
+    if(firebase.auth().currentUser == null){
+      button =   <Button styles={styles.hide}/>;
+      console.log("null!");
+    }
+    else {
+      button =  <Button
+                label="Profile"
+                styles={{button: styles.headerButton, label: styles.labelSmall}}
+                onPress={this.profile}
+              />;
+     console.log(firebase.auth().currentUser);
+    }
     return (
     <View style={{flex: 1}}>
       <View style={styles.headerContainer}>
-        <Button
-          label="Profile"
-          styles={{button: styles.headerButton, label: styles.labelSmall}}
-          onPress={this.profile}
-        />
+        {button}
         <Button
           label="Settings"
           styles={{button: styles.headerButton, label: styles.labelSmall}}
@@ -114,6 +123,9 @@ export default class ScreenSelection extends Component {
       borderWidth: 1,
       borderRadius: 50,
       borderColor: '#fff',
+    },
+    hide: {
+      opacity: 1,
     },
 
 });

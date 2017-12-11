@@ -3,8 +3,10 @@ import { StyleSheet, Text, View} from 'react-native';
 import { StackNavigator, NavigationActions } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
+//import database from './database';
 
 const database = require('./database');
+const firebase = require('firebase');
 export default class ScreenSelection extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +16,7 @@ export default class ScreenSelection extends Component {
     }
     this.getUserData();
     this.back = this.back.bind(this);
-    this.logout = this.logout.bind(this);
+    this.logOut = this.logOut.bind(this);
 
   }
 
@@ -32,13 +34,21 @@ export default class ScreenSelection extends Component {
   // this value to authenticate with your backend server, if
   // you have one. Use User.getToken() instead.
 
-
+  logOut(){
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      // An error happened.
+    });
+      const { navigate } = this.props.navigation;
+      navigate('Main');
+  }
   back() {
     const { goBack } = this.props.navigation;
     goBack();
   }
 
-  logout() {
+/*  logout() {
     const resetAction = NavigationActions.reset({
       index: 0,
       actions: [
@@ -46,7 +56,7 @@ export default class ScreenSelection extends Component {
       ]
     })
     this.props.navigation.dispatch(resetAction)
-  }
+  }*/
 
   render() {
     return (
@@ -58,9 +68,9 @@ export default class ScreenSelection extends Component {
           onPress={this.back}
         />
         <Button
-          label="Profile Settings"
+          label="Log Out"
           styles={{button: styles.headerButton, label: styles.labelSmall}}
-          onPress={this.logout}
+          onPress={this.logOut}
         />
       </View>
       <View style={styles.profileContainer}>

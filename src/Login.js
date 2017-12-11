@@ -22,6 +22,11 @@ export default class Login extends Component {
   }
 
   onButtonPress() {
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      // An error happened.
+    });
       const { navigate } = this.props.navigation;
       navigate('Selection');
   };
@@ -34,17 +39,18 @@ export default class Login extends Component {
   // ...
   });
   console.log(firebase.auth().currentUser);
-  var userRef = firebase.database().ref("Users");
+  /*var userRef = firebase.database().ref("Users");
   userRef.push({
     uid: firebase.auth().currentUser.uid,
     email: this.state.email,
-  });
+  });*/
 
 
   const { navigate } = this.props.navigation;
   navigate('Selection');
   };
   logIn(){
+    console.log("im loging in");
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
   // Handle Errors here.
 
