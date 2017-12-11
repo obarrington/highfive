@@ -14,7 +14,7 @@ export default class PromptScreen extends Component {
     super(props);
     this.state = {
       prompt: "loading...",
-      seconds: 10
+      seconds: 120
 
     };
     this.promptType = this.props.navigation.state.params.type;
@@ -37,17 +37,16 @@ export default class PromptScreen extends Component {
     database.getMeAPrompt(this.promptType).then(p => {
       exercisePrompt = p;
       this.setState({ prompt: exercisePrompt });
-      //setTimeout(this.nextScreen, 5000);
+      var timer = setInterval(() => {
+        this.setState(previousState => {
+          return { seconds: previousState.seconds - 1 };
+        });
+      }, 1000);
+      this.setState({timer: timer});
+      setTimeout(this.nextScreen, 123000);
     });
 
-    var timer = setInterval(() => {
-      this.setState(previousState => {
-        return { seconds: previousState.seconds - 1 };
-      });
-    }, 1000);
 
-    this.setState({timer: timer});
-    setTimeout(this.nextScreen, 10000);
   }
 
   componentWillUnmount() {
