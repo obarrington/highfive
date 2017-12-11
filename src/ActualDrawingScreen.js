@@ -79,7 +79,7 @@ export default class ActualDrawingScreen extends React.Component {
     );
      
     //Make the PNG a File  
-      
+      //nothing works
     // create a path you want to write to
     var path = RNFileSys.DocumentDirectoryPath + '/test.txt';
 
