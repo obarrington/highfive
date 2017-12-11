@@ -132,28 +132,30 @@ function genUser() {
   userRef.once("value")
   .then(function(snapshot) {
   //  THE ISSUE IS HERE
+  console.log("finding user");
     snapshot.forEach(function(childSnap) {
       users.push({
         key : childSnap.key,
         childData : childSnap.val()
       });
     });
-
+    console.log(users[0].childData.uid,"the user");
+    console.log(currUser.uid, "curr");
     for(var i = 0; i < users.length; i++){
-      if(currUser.uid == users[i].childData.uid){
+      if(firebaseApp.auth().currentUser.uid == users[i].childData.uid){
 
         user = {
           email: users[i].childData.email,
           uid: users[i].childData.uid
           //history: users[i].childData.history
         };
-        console.log(user);
+        console.log(user, "in database");
       //  return user;
       }
     }
     });
   }
-    waitForIt(500)
+    waitForIt(900)
       .then(function () {
         resolve(user);
       });

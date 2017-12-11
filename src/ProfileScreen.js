@@ -27,6 +27,7 @@ export default class ScreenSelection extends Component {
       this.setState({
         user : user
       });
+      console.log("prof screen", user);
     });;
 
 

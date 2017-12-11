@@ -34,23 +34,22 @@ export default class Login extends Component {
     console.log("email is " + this.state.email);
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
   // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
+    var errorCode = error.code;
+    var errorMessage = error.message;
   // ...
   });
   console.log(firebase.auth().currentUser);
-  /*var userRef = firebase.database().ref("Users");
+  var userRef = firebase.database().ref("Users");
   userRef.push({
     uid: firebase.auth().currentUser.uid,
     email: this.state.email,
-  });*/
+  });
 
 
   const { navigate } = this.props.navigation;
   navigate('Selection');
   };
   logIn(){
-    console.log("im loging in");
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
   // Handle Errors here.
 
@@ -59,14 +58,24 @@ export default class Login extends Component {
   // ...
   });
   console.log(firebase.auth().currentUser);
-  const { navigate } = this.props.navigation;
-  navigate('Selection');
+//  let loggedIn = null;
+  if(firebase.auth().currentUser !== null){
+    const { navigate } = this.props.navigation;
+    navigate('Selection');
+  }
+
   };
 
   render() {
+    /*let loggedIn = null;
+    let num = 0;
+    if(firebase.auth.currentUser == null && num = 1){
+      loggedIn = <Text>Email/Password did not match. Please try again.</Text>;
+    }*/
     return (
       <ScrollView style={styles.scroll}>
       <Container style={styles.bigContainer}>
+
     <Text style={styles.textLabel}></Text>
       <TextInput style={styles.textInput}
       onChangeText={(text) => this.setState({email:text})}
