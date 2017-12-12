@@ -11,9 +11,10 @@ import ColorSelector from './ColorSelector';
 import Reaction from './Reaction';
 import Slider from 'react-native-slider';
 import Button from './Button';
+import RNFileSys from 'react-native-fs';
 
 import storage from './storage';
-var RNFileSys = require('react-native-fs');
+//var RNFileSys = require('react-native-fs');
 //import RNFSPackage from 'com.rnfs.RNFSPackage'; 
 
 var foo = 'loading'
