@@ -48,7 +48,7 @@ export default StyleSheet.create({
   textLabel: {
         fontSize: 20,
         fontWeight: 'bold',
-        fontFamily: 'Verdana',
+        //fontFamily: 'Verdana',
         marginBottom: 10,
         color: '#FFF',
     },

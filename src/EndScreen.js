@@ -58,7 +58,7 @@ export default class EndScreen extends Component {
 
                     <TouchableOpacity onPress={this.onOpen.bind(this)}>
                         <View style={styles.instructions}>
-                            <Text>Share UI Component</Text>
+                            <Text>Share to Social</Text>
                         </View>
                     </TouchableOpacity>
 
