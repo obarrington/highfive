@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, AppRegistry, TouchableOpacity, Clipboard, ToastAndroid,
+    AlertIOS, Platform} from 'react-native';
 import { StackNavigator, NavigationActions } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
+import Share, {ShareSheet} from 'react-native-share';
 
 export default class EndScreen extends Component {
   constructor(props) {
@@ -15,6 +17,16 @@ export default class EndScreen extends Component {
     this.playAgain=this.playAgain.bind(this);
     this.saveWork=this.saveWork.bind(this);
     this.shareWork=this.shareWork.bind(this);
+  }
+
+  onCancel(){
+    console.log("CANCEL");
+    this.setState({visible:false});
+  }
+
+  onOpen(){
+    console.log("OPEN");
+    this.setState({visible:true});
   }
 
   continue() {
@@ -31,7 +43,7 @@ export default class EndScreen extends Component {
   }
 
   saveWork() {
-    xs
+    
   }
 
   shareWork() {
@@ -39,6 +51,13 @@ export default class EndScreen extends Component {
   }
 
   render() {
+    let shareOptions = {
+      title: "My Art",
+      message: "Take a look at what I made on High Five!",
+      url: "http://facebook.github.io/react-native/",
+      subject: "Share Link" //  for email
+    };
+
     return (
       <View style={{flex: 1}}>
         <View style={styles.continueContainer}>
@@ -66,17 +85,25 @@ export default class EndScreen extends Component {
           <Button
           label="Share Work"
           styles={{button: styles.primaryButton, label:styles.label}}
-          onPress={this.shareWork}
+          onPress={()=>{
+                            this.onCancel();
+                            setTimeout(() => {
+                                Share.open(shareOptions)
+                            },300)}}
+
           />
         </View>
       </View>
   );
 };
 }
+
+// #34A853 -- continue working and save work
+// 
   const styles = StyleSheet.create({
     continueContainer: {
       flex: 1,
-      backgroundColor: '#75c68b',
+      backgroundColor: '#34A853',
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -88,7 +115,7 @@ export default class EndScreen extends Component {
     },
     saveContainer: {
       flex: 1,
-      backgroundColor: '#75c68b',
+      backgroundColor: '#34A853',
       alignItems: 'center',
       justifyContent: 'center',
     },
