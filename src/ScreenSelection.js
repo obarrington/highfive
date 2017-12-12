@@ -4,29 +4,43 @@ import { StackNavigator } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
 
+const settings = require('./settingSettings');
 
 export default class ScreenSelection extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isHandDraw: false
+    };
 
 
     this.write = this.write.bind(this);
     this.draw = this.draw.bind(this);
     this.profile = this.profile.bind(this);
     this.settings = this.settings.bind(this);
+
+    // this.set(isHandDraw: false)
+    // this.watchKeys(isHandDraw, this.setState({isHandDraw: true}))
+    console.log(settings.getMeHandDraw());
   }
 
   write() {
       const { navigate } = this.props.navigation;
-
-      navigate('Prompt', {type: "write"});
+      if (settings.getMeHandDraw() == false) {
+        navigate('Prompt', {type: "write"});
+      } else {
+        navigate('HandDraw', {type: "write"})
+      }
   };
 
   draw() {
       const { navigate } = this.props.navigation;
+      if (settings.getMeHandDraw() == false) {
+        navigate('Prompt', {type: "draw"});
+      } else {
+        navigate('HandDraw', {type: "draw"})
+      }
 
-      navigate('Prompt', {type: "draw"});
   };
 
   profile() {
@@ -36,6 +50,9 @@ export default class ScreenSelection extends Component {
   };
 
   settings() {
+    const { navigate } = this.props.navigation;
+
+    navigate('Settings', {type: this.state.isHandDraw});
 
   };
 
@@ -51,6 +68,7 @@ export default class ScreenSelection extends Component {
         <Button
           label="Settings"
           styles={{button: styles.headerButton, label: styles.labelSmall}}
+          onPress={this.settings}
         />
       </View>
       <View style={styles.writeContainer}>

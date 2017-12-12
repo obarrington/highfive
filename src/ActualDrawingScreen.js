@@ -4,7 +4,13 @@ import { AppRegistry, Dimensions, View, Alert, Platform, TouchableHighlight,
 import { takeSnapshotAsync } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import Colors from './Colors';
-import DrawScreen from './DrawScreen.js';
+// if (Platform.OS === 'ios') {
+//   import DrawScreen from './DrawScreen';
+// } else {
+//   import DrawScreen from './DrawScreenAndriod';
+// }
+import DrawScreen from './DrawScreen';
+
 //import Header from './Header';
 import ColorSelector from './ColorSelector';
 //import ResultImages from './ResultImages';
@@ -47,15 +53,7 @@ export default class ActualDrawingScreen extends React.Component {
     navigate('end');
   }
 
-  DidJob() {
-    console.log('did my h*cking job');
-  }
-
   componentWillMount() {
-    // this.setState({prompt: this.promptText}, this.DidJob());
-    // console.log('in will mount');
-    // console.log(this.state.prompt);
-    // this.setState({prompt: this.promptText}, this.DidJob());
 
     var timer = setInterval(() => {
       this.setState(previousState => {
@@ -174,7 +172,7 @@ export default class ActualDrawingScreen extends React.Component {
             width={Dimensions.get('window').width}
             height={Dimensions.get('window').width+50}
             color={this.state.color}
-            strokeWidth={this.state.value}
+            strokeWidth={Number(this.state.value)}
             totalOffset={this.state.totalOffset}
           />
           </View>
