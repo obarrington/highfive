@@ -18,6 +18,8 @@ import Reaction from './Reaction';
 import Slider from 'react-native-slider';
 import Button from './Button';
 
+const storage = require('./storage');
+
 var foo = 'loading'
 var DEFAULT_VALUE = 4;
 // import React from "react";
