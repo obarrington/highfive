@@ -9,6 +9,11 @@ import PromptScreen from './PromptScreen';
 import WriteScreen from './WriteScreen';
 import ActualDrawingScreen from './ActualDrawingScreen';
 import EndScreen from './EndScreen';
+import CreationScreen from './Login/AccountCreationComponent';
+import Settings from './Settings';
+import HandDrawScreen from './HandDrawScreen';
+import Camera from './camera';
+import ConfirmPic from './ConfirmPic';
 
 import { StackNavigator } from 'react-navigation';
 
@@ -20,7 +25,12 @@ export const AppNavigation = StackNavigator(
     Prompt: {screen: PromptScreen},
     draw: {screen: ActualDrawingScreen},
     write: {screen: WriteScreen},
-    end: {screen: EndScreen}
+    end: {screen: EndScreen},
+    Creation: {screen: CreationScreen},
+    Settings: {screen: Settings},
+    HandDraw: {screen: HandDrawScreen},
+    camera: {screen: Camera},
+    ConfirmPic: {screen: ConfirmPic},
   },
   {
     headerMode: 'none'
@@ -46,6 +56,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
 
 AppRegistry.registerComponent('App', () => App)
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import LoginComponent from './LoginComponent';
-import { loginAsGuest } from '../actions/currentUserActions';
+import { loginAsGuest, loginUser, newUser } from '../actions/currentUserActions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -14,6 +14,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onLoginAsGuest: () => {
       dispatch(loginAsGuest())
     },
+    onLoginUser: (user) => {
+      dispatch(loginUser(firebase.auth().currentUser))
+    },
+    onNewUser: () => {
+      dispatch(newUser())
+    }
   }
 }
 
