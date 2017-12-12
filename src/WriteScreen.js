@@ -74,7 +74,7 @@ export default class Write extends React.Component {
           <TextInput
             style = {styles.textInput}
             onChangeText = {(text) => this.setState({text})}
-            value = {this.state.text}
+            value = {this.state.text}  //value is the
             placeholder="Start writing here!"
             multiline= {true}
           />
