@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, AppRegistry, TouchableOpacity, Clipboard, Toast
     AlertIOS, Platform} from 'react-native';
 import { StackNavigator, NavigationActions } from 'react-navigation';
 import Share, {ShareSheet, Button} from 'react-native-share';
+import ActualDrawingScreen from './ActualDrawingScreen';
 
 //Do...
 //npm install react-native-share --save
@@ -15,6 +16,7 @@ export default class EndScreen extends Component {
         this.state = {visible: false};
 
         this.returnToSelection = this.returnToSelection.bind(this);
+        this.results = this.props.navigation.state.params.results;
     }
     onCancel(){
         console.log("CANCLE");
@@ -46,10 +48,11 @@ export default class EndScreen extends Component {
             url: "http://facebook.github.io/react-native/",
             subject: "Share Link" //  for email
         };
+        console.log("End screen Results " + this.results);
 
         return (
                 <View style={styles.Container}>
-
+                
                     <Button
                         label="Back to Selection Screen"
                         styles={{button: styles.button, label: styles.labelSmall}}

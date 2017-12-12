@@ -49,8 +49,13 @@ export default class ActualDrawingScreen extends React.Component {
   }
 
   nextScreen() {
-    const { navigate } = this.props.navigation;
-    navigate('end');
+     //this.state.results = [1,2,3];
+     this._save().then(v => {
+         console.log("Saving!"); 
+         const { navigate } = this.props.navigation;
+         navigate('end', {results: this.state.results});
+    });
+      
   }
 
   componentWillMount() {
@@ -88,6 +93,8 @@ export default class ActualDrawingScreen extends React.Component {
   }
 
   _save = async () => {
+      //removed async
+      console.log("INSIDE SAVE");
     const result = await takeSnapshotAsync(
       this._signatureView,
       { format: 'png', result: 'base64', quality: 1.0 }
@@ -95,8 +102,11 @@ export default class ActualDrawingScreen extends React.Component {
 
     const results = this.state.results;
     results.push(result);
+      
+    //console.log("Results " + results);
 
     this.setState({ results });
+    return 0;
   }
 
   _setDonePaths = (donePaths) => {
@@ -174,7 +184,8 @@ export default class ActualDrawingScreen extends React.Component {
             color={this.state.color}
             strokeWidth={Number(this.state.value)}
             totalOffset={this.state.totalOffset}
-          />
+            results = {this.state.results}
+            />
           </View>
  </View>
     );
