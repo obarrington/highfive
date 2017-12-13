@@ -78,7 +78,8 @@ export default class ScreenSelection extends Component {
         <Text style={styles.label}>{this.state.user.email}</Text>
       </View>
       <View style={styles.historyContainer}>
-        <Text style={styles.label}>"helloo!"</Text>
+        <Text style={styles.label}>Placeholder
+        </Text>
       </View>
     </View>
   );
