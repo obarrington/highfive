@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, AppRegistry, TouchableOpacity, Clipboard, Toast
     AlertIOS, Platform} from 'react-native';
 import { StackNavigator, NavigationActions } from 'react-navigation';
 import Share, {ShareSheet, Button} from 'react-native-share';
+var base64 = require('base-64');
 
 //Do...
 //npm install react-native-share --save
@@ -15,6 +16,7 @@ export default class EndScreen extends Component {
         this.state = {visible: false};
 
         this.returnToSelection = this.returnToSelection.bind(this);
+        this.text_input = this.props.navigation.state.params.write_input;
     }
     onCancel(){
         console.log("CANCLE");
@@ -36,6 +38,12 @@ export default class EndScreen extends Component {
         this.props.navigation.dispatch(resetAction)
     }
 
+    convertToURL() {
+        var convertToBase64 = this.base64.encode(this.text_input);
+        var URL = "data:image/png;base64,<" + convertToBase64 + ">";
+        return URL;
+    }
+
     render() {
         //there is certain way of Url format for sharing. - look at the following link
         //https://github.com/EstebanFuentealba/react-native-share
@@ -43,9 +51,10 @@ export default class EndScreen extends Component {
         let shareOptions = {
             title: "React Native",
             message: "Hola mundo",
-            url: "http://facebook.github.io/react-native/",
+            url: this.convertToURL(),
             subject: "Share Link" //  for email
         };
+        console.log("From prev screen" + this.text_input);
 
         return (
                 <View style={styles.Container}>

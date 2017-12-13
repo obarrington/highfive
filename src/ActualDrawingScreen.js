@@ -49,6 +49,8 @@ export default class ActualDrawingScreen extends React.Component {
   }
 
   nextScreen() {
+
+    //this._save(); //call _save function to access from EndScreen????
     const { navigate } = this.props.navigation;
     navigate('end');
   }
