@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, AppRegistry, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import store from './reduxStore';
-import Login from './Login';
+import Login from './Login/LoginComponent';
 import ScreenSelection from './ScreenSelection';
 import ProfileScreen from './ProfileScreen';
 import PromptScreen from './PromptScreen';
