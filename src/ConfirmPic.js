@@ -16,15 +16,9 @@ export default class GalleryScreen extends React.Component {
     super(props);
     this.state = {};
     this.picture = this.props.navigation.state.params.data;
-    this.nextScreen = this.nextScreen.bind(this);
     this.back = this.back.bind(this);
     this.end = this.end.bind(this);
   }
-
-  nextScreen() {
-    const { navigate } = this.props.navigation;
-    navigate('end');
-  };
 
   back() {
     const { goBack } = this.props.navigation;
@@ -34,7 +28,7 @@ export default class GalleryScreen extends React.Component {
   end() {
     const { navigate } = this.props.navigation;
 
-    navigate('end');
+    navigate('end', {results: this.picture});
   };
 
   componentDidMount() {
