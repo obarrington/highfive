@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
     fontSize: 20,
     fontWeight: 'bold',
-    fontFamily: 'sans-serif','Verdana',
+    fontFamily: 'sans-serif, Verdana',
     marginBottom: 10,
     color: '#595856'
   },
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFF',
     fontWeight: 'bold',
-    fontFamily: 'sans-serif','Verdana',
+    fontFamily: 'sans-serif, Verdana',
   },
   buttonBlackText: {
     fontSize: 20,
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#4D5656',
     fontWeight: 'bold',
-    fontFamily: 'sans-serif','Verdana',
+    fontFamily: 'sans-serif, Verdana',
   },
   secondaryButton: {
 
