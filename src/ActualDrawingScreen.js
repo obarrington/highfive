@@ -10,6 +10,8 @@ import Reaction from './Reaction';
 import Slider from 'react-native-slider';
 import Button from './Button';
 
+const settings = require('./settingSettings');
+
 var foo = 'loading'
 var DEFAULT_VALUE = 4;
 
@@ -26,7 +28,7 @@ export default class ActualDrawingScreen extends React.Component {
       doneCircle: [],
       totalOffset: 0,
       prompt: 'loading',
-      seconds: 120,
+      seconds: settings.getTimer(),
       timer: null
     };
     this.promptText = this.props.navigation.state.params.prompt;

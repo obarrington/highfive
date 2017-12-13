@@ -88,7 +88,6 @@ export default class Write extends React.Component {
         <View style = {styles.containerA}>
           <Text style = {styles.headline}>Writing</Text>
         </View>
-
         <View style = {styles.containerB}>
           <TextInput
             style = {styles.textInput}

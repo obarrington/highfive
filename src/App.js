@@ -33,7 +33,10 @@ export const AppNavigation = StackNavigator(
     ConfirmPic: {screen: ConfirmPic},
   },
   {
-    headerMode: 'none'
+    headerMode: 'none',
+    navigationOptions: {
+        gesturesEnabled: false,
+    },
   }
 );
 
