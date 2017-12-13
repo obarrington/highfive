@@ -29,11 +29,11 @@ export default class EndScreen extends Component {
     this.setState({visible:true});
   }                    
 
-  <TouchableOpacity onPress={this.onOpen.bind(this)}>
+  /*<TouchableOpacity onPress={this.onOpen.bind(this)}>
                         <View style={styles.instructions}>
                             <Text>Share to Social</Text>
                         </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity>)*/
 
   continue() {
     const { navigate } = this.props.navigation
