@@ -15,8 +15,8 @@ export default class EndScreen extends Component {
         super(props);
         this.state = {visible: false};
 
-        this.returnToSelection = this.returnToSelection.bind(this);
-        this.results = this.props.navigation.state.params.results;
+        //this.returnToSelection = this.returnToSelection.bind(this);
+        //this.results = this.props.navigation.state.params.results;
     }
     onCancel(){
         console.log("CANCLE");
@@ -169,13 +169,13 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 25,
         fontWeight: 'bold',
-        fontFamily: 'sans-serif, Verdana',
+        fontFamily: 'sans-serif',
         color: '#fff',
     },
     labelSmall: {
         fontSize: 12,
         fontWeight: 'bold',
-        fontFamily: 'sans-serif , Verdana',
+        fontFamily: 'sans-serif',
         color: '#fff'
     },
 });

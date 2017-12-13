@@ -172,12 +172,15 @@ function addDrawing(drawing){
       new_exercise: drawing,
     });
   }
-function addWriting(writing){
+function addWriting(text){
       var user = getUser();
-      var curr = Object.keys(userData.history.write).length;
-      ref.child("users").child(user.uid).set({
-          new_exercise: writing,
-        });
+      if(user != null){
+      var userRef = firebase.database().ref("Users/History");
+      var size = userRef.length;
+      userRef.push({
+        writing: {text},
+      });
+    }
 }
 
 module.exports = {

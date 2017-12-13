@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 50,
     fontWeight: 'bold',
-    fontFamily: 'sans-serif, Verdana',
+    fontFamily: 'sans-serif',
     color: '#fff',
   },
   primaryButton: {

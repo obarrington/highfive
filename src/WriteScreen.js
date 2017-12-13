@@ -23,6 +23,8 @@ export default class Write extends React.Component {
   }
 
   nextScreen() {
+
+
     const { navigate } = this.props.navigation;
     navigate('end');
   }
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
   timerStyle: {
     color: '#FFF',
     fontWeight: 'bold',
-    fontFamily: 'sans-serif, Verdana',
+    fontFamily: 'sans-serif',
 
   },
   container: {
@@ -128,7 +130,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFF',
     fontWeight: 'bold',
-    fontFamily: 'sans-serif, Verdana',
+    fontFamily: 'sans-serif',
 
   //  alignItems: 'top',
   //  justifyContent: 'top',
@@ -143,7 +145,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFF',
     fontWeight: 'bold',
-    fontFamily: 'sans-serif, Verdana',
+    fontFamily: 'sans-serif',
   },
   primaryButton: {
     backgroundColor: '#34A853'
@@ -168,13 +170,13 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 25,
     fontWeight: 'bold',
-    fontFamily: 'sans-serif, Verdana',
+    fontFamily: 'sans-serif',
     color: '#fff',
   },
   labelSmall: {
     fontSize: 12,
     fontWeight: 'bold',
-    fontFamily: 'sans-serif, Verdana',
+    fontFamily: 'sans-serif',
     color: '#fff'
   },
 
