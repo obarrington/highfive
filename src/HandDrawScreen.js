@@ -14,7 +14,8 @@ export default class PromptScreen extends Component {
     super(props);
     this.state = {
       prompt: "loading...",
-      seconds: 120
+      seconds: 120,
+      timer: null
 
     };
     this.promptType = this.props.navigation.state.params.type;
@@ -41,9 +42,20 @@ export default class PromptScreen extends Component {
         this.setState(previousState => {
           return { seconds: previousState.seconds - 1 };
         });
+        if(this.state.seconds <= 0) {
+          clearInterval(this.state.timer);
+          this.nextScreen();
+        }
       }, 1000);
+
       this.setState({timer: timer});
-      setTimeout(this.nextScreen, 123000);
+      // var timer = setInterval(() => {
+      //   this.setState(previousState => {
+      //     return { seconds: previousState.seconds - 1 };
+      //   });
+      // }, 1000);
+      // this.setState({timer: timer});
+      // setTimeout(this.nextScreen, 123000);
     });
 
 
@@ -54,6 +66,11 @@ export default class PromptScreen extends Component {
   }
 
   render() {
+    var minutes = Math.floor(this.state.seconds / 60);
+    var seconds = this.state.seconds % 60;
+    if(seconds < 10) {
+      seconds = "0" + seconds;
+    }
 
     return (
       <View style={this.state.style}>
@@ -61,7 +78,7 @@ export default class PromptScreen extends Component {
           <Text style={styles.label}>{this.state.prompt}</Text>
         </View>
         <View style={styles.container}>
-          <Text style={styles.timerStyle}>{this.state.seconds}</Text>
+          <Text style={styles.timerStyle}>{minutes}:{seconds}</Text>
         </View>
       </View>
     );
