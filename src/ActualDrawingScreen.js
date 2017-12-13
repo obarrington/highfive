@@ -51,11 +51,11 @@ export default class ActualDrawingScreen extends React.Component {
   nextScreen() {
      //this.state.results = [1,2,3];
      this._save().then(v => {
-         console.log("Saving!"); 
+         console.log("Saving!");
          const { navigate } = this.props.navigation;
          navigate('end', {results: this.state.results});
     });
-      
+
   }
 
   componentWillMount() {
@@ -102,7 +102,7 @@ export default class ActualDrawingScreen extends React.Component {
 
     const results = this.state.results;
     results.push(result);
-      
+
     //console.log("Results " + results);
 
     this.setState({ results });
@@ -207,7 +207,7 @@ let styles = StyleSheet.create({
   timerStyle: {
   color: '#FFF',
   fontWeight: 'bold',
-  //fontFamily: 'Verdana',
+  fontFamily: 'sans-serif',
   alignSelf: 'center',
 },
   container2: {
@@ -235,7 +235,7 @@ let styles = StyleSheet.create({
     fontSize: 12,
     color: '#FFF',
     fontWeight: 'bold',
-    //fontFamily: 'Verdana',
+    fontFamily: 'sans-serif',
   },
   header: {
     marginTop: 25,
