@@ -26,7 +26,7 @@ export default class Write extends React.Component {
 
   nextScreen() {
     const { navigate } = this.props.navigation;
-    navigate('end');
+    navigate('end', {results: 0});
   }
 
   viewPrompt() {
