@@ -207,7 +207,7 @@ let styles = StyleSheet.create({
   timerStyle: {
   color: '#FFF',
   fontWeight: 'bold',
-  fontFamily: 'Verdana',
+  fontFamily: 'sans-serif','Verdana',
   alignSelf: 'center',
 },
   container2: {
@@ -235,7 +235,7 @@ let styles = StyleSheet.create({
     fontSize: 12,
     color: '#FFF',
     fontWeight: 'bold',
-    fontFamily: 'Verdana',
+    fontFamily: 'sans-serif','Verdana',
   },
   header: {
     marginTop: 25,
