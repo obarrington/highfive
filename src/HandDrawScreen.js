@@ -6,6 +6,7 @@ import Button from './Button';
 import ScreenSelection from './ScreenSelection'
 
 const database = require('./database');
+const settings = require('./settingSettings')
 
 var exercisePrompt = "";
 
@@ -14,7 +15,7 @@ export default class PromptScreen extends Component {
     super(props);
     this.state = {
       prompt: "loading...",
-      seconds: 120,
+      seconds: settings.getTimer(),
       timer: null
 
     };
