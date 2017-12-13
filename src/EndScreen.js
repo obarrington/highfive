@@ -55,7 +55,7 @@ export default class EndScreen extends Component {
       title: "My Art",
       message: "Take a look at what I made on High Five!",
       url: "http://facebook.github.io/react-native/",
-      subject: "Share Link" //  for email
+      subject: "High Five Art" //  for email
     };
 
     return (
@@ -86,11 +86,10 @@ export default class EndScreen extends Component {
           label="Share Work"
           styles={{button: styles.primaryButton, label:styles.label}}
           onPress={()=>{
-                            this.onCancel();
-                            setTimeout(() => {
-                                Share.open(shareOptions)
-                            },300)}}
-
+            this.onCancel();
+            setTimeout(() => {
+              Share.open(shareOptions)
+            },300)}}
           />
         </View>
       </View>
