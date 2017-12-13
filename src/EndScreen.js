@@ -15,8 +15,8 @@ export default class EndScreen extends Component {
         super(props);
         this.state = {visible: false};
 
-        //this.returnToSelection = this.returnToSelection.bind(this);
-        //this.results = this.props.navigation.state.params.results;
+        this.returnToSelection = this.returnToSelection.bind(this);
+        this.results = this.props.navigation.state.params.results;
     }
     onCancel(){
         console.log("CANCLE");
@@ -52,7 +52,6 @@ export default class EndScreen extends Component {
 
         return (
                 <View style={styles.Container}>
-
                     <Button
                         label="Back to Selection Screen"
                         styles={{button: styles.button, label: styles.labelSmall}}
@@ -169,13 +168,13 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 25,
         fontWeight: 'bold',
-        fontFamily: 'sans-serif',
+        fontFamily: 'Verdana',
         color: '#fff',
     },
     labelSmall: {
         fontSize: 12,
         fontWeight: 'bold',
-        fontFamily: 'sans-serif',
+        fontFamily: 'Verdana',
         color: '#fff'
     },
 });

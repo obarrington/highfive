@@ -37,7 +37,8 @@ export default class ActualDrawingScreen extends React.Component {
       doneCircle: [],
       totalOffset: 0,
       prompt: 'loading',
-      seconds: 120
+      seconds: 120,
+      timer: null
     };
     this.promptText = this.props.navigation.state.params.prompt;
     console.log('In constructor');
@@ -64,10 +65,14 @@ export default class ActualDrawingScreen extends React.Component {
       this.setState(previousState => {
         return { seconds: previousState.seconds - 1 };
       });
+      if(this.state.seconds <= 0) {
+        clearInterval(this.state.timer);
+        this.nextScreen();
+      }
     }, 1000);
 
     this.setState({timer: timer});
-    setTimeout(this.nextScreen, 132000);
+
 
     foo = this.promptText;
     console.log(foo);
@@ -137,6 +142,13 @@ export default class ActualDrawingScreen extends React.Component {
   }
 
   render() {
+
+    var minutes = Math.floor(this.state.seconds / 60);
+    var seconds = this.state.seconds % 60;
+    if(seconds < 10) {
+      seconds = "0" + seconds;
+    }
+
     return (
       <View
         onLayout={this._onLayoutContainer}
@@ -159,7 +171,7 @@ export default class ActualDrawingScreen extends React.Component {
           <Text style={styles.timerStyle}>
             Stroke Width: {this.state.value}
           </Text>
-          <Text style={styles.timerStyle}>{this.state.seconds}</Text>
+          <Text style={styles.timerStyle}>{minutes}:{seconds}</Text>
         </View>
             <View style={styles.promptButton}>
             <Button
