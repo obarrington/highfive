@@ -99,10 +99,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 50,
     fontWeight: 'bold',
-<<<<<<< Updated upstream
-=======
     fontFamily: 'serif',
->>>>>>> Stashed changes
     fontFamily: 'Verdana',
     color: '#fff',
   },
