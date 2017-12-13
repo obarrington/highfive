@@ -27,7 +27,13 @@ export default class EndScreen extends Component {
   onOpen(){
     console.log("OPEN");
     this.setState({visible:true});
-  }
+  }                    
+
+  <TouchableOpacity onPress={this.onOpen.bind(this)}>
+                        <View style={styles.instructions}>
+                            <Text>Share to Social</Text>
+                        </View>
+                    </TouchableOpacity>
 
   continue() {
     const { navigate } = this.props.navigation

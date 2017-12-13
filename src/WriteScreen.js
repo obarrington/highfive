@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   timerStyle: {
     color: '#FFF',
     fontWeight: 'bold',
-    fontFamily: 'Verdana',
+    //fontFamily: 'Verdana',
   },
   container: {
     flex: 1,
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFF',
     fontWeight: 'bold',
-    fontFamily: 'Verdana',
+    //fontFamily: 'Verdana',
 
   //  alignItems: 'top',
   //  justifyContent: 'top',
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFF',
     fontWeight: 'bold',
-    fontFamily: 'Verdana',
+    //fontFamily: 'Verdana',
   },
   primaryButton: {
     backgroundColor: '#34A853'
@@ -166,13 +166,13 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 25,
     fontWeight: 'bold',
-    fontFamily: 'Verdana',
+    //fontFamily: 'Verdana',
     color: '#fff',
   },
   labelSmall: {
     fontSize: 12,
     fontWeight: 'bold',
-    fontFamily: 'Verdana',
+    //fontFamily: 'Verdana',
     color: '#fff'
   },
 
