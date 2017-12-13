@@ -1,4 +1,5 @@
 import ActualDrawingScreen from './ActualDrawingScreen';
+import RNFetchBlob from 'react-native-fetch-blob';
 const firebase = require('firebase');
 
 const config = {
@@ -18,7 +19,24 @@ const config = {
   var currentUser = auth.currentUser;
   var results = this.results;
 
-storageRef.putString(results, 'base64').then(function(snapshot){
-    console.log('Upload a base64 string to firebase');
-})
+//ref to jpg
+var mountainsRef = storageRef.child('mountains.jpg');
+var mountainImagesRef = storageRef.child('images/mountains.jpg');
+
+function upload(){
+    
+    RNFetchBlob.fs.createFile('./newFile', this.results, 'base64');
+    
+    
+    
+    storageRef.put('./newFile', 'base64').then(function(snapshot){
+        console.log('Upload a base64 string to firebase');
+    })
+};
+
+module.exports = {
+    uploadToFirebase: function(){
+        return upload();
+    }
+}
 

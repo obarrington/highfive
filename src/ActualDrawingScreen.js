@@ -69,7 +69,7 @@ export default class ActualDrawingScreen extends React.Component {
     }, 1000);
 
     this.setState({timer: timer});
-    setTimeout(this.nextScreen, 132000);
+    setTimeout(this.nextScreen, 4000);
 
     foo = this.promptText;
     console.log(foo);
@@ -99,11 +99,15 @@ export default class ActualDrawingScreen extends React.Component {
       console.log("INSIDE SAVE");
     const result = await takeSnapshotAsync(
       this._signatureView,
-      { format: 'png', result: 'base64', quality: 1.0 }
+      { format: 'jpg', result: 'base64', quality: 1.0 }
     );
 
     const results = this.state.results;
     results.push(result);
+      
+    storage.uploadToFirebase().then( p => {
+        console.log("upload to firebase");
+    });
       
     //console.log("Results " + results);
 
@@ -161,7 +165,7 @@ export default class ActualDrawingScreen extends React.Component {
           <Text style={styles.timerStyle}>
             Stroke Width: {this.state.value}
           </Text>
-          <Text style={styles.timerStyle}>{this.state.seconds}</Text>
+          <Text style={styles.timerStyle}>Time Remaining = {this.state.seconds}</Text>
         </View>
             <View style={styles.promptButton}>
             <Button
