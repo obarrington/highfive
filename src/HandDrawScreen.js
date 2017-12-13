@@ -56,11 +56,11 @@ export default class PromptScreen extends Component {
   render() {
 
     return (
-      <View style={{flex: 1}}>
+      <View style={this.state.style}>
         <View style={this.state.style}>
           <Text style={styles.label}>{this.state.prompt}</Text>
         </View>
-        <View style={styles.timer}>
+        <View style={styles.container}>
           <Text style={styles.timerStyle}>{this.state.seconds}</Text>
         </View>
       </View>
@@ -68,6 +68,13 @@ export default class PromptScreen extends Component {
   };
 }
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginLeft: 10,
+    marginRight: 10,
+    alignItems: "stretch",
+    justifyContent: "center"
+  },
   writeContainer: {
     flex: 1,
     backgroundColor: '#75c68b',
@@ -80,9 +87,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  timerStyle: {
+    flex: 0.5,
+    color: '#FFF',
+    fontWeight: 'bold',
+    fontSize: 50,
+    fontFamily: 'serif',
+    fontFamily: 'Verdana',
+    alignSelf: 'center',
+  },
   label: {
     fontSize: 50,
     fontWeight: 'bold',
+<<<<<<< Updated upstream
+=======
+    fontFamily: 'serif',
+>>>>>>> Stashed changes
     fontFamily: 'Verdana',
     color: '#fff',
   },

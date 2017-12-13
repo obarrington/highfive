@@ -17,7 +17,6 @@ import {
   ScrollView,
   Vibration,
 } from 'react-native';
-import GalleryScreen from './GalleryScreen';
 import { StackNavigator } from 'react-navigation';
 
 const flashModeOrder = {

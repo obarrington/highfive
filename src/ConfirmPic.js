@@ -9,7 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import { FileSystem } from 'expo';
+import Button from './Button';
 
 export default class GalleryScreen extends React.Component {
   constructor(props) {
@@ -52,23 +52,19 @@ export default class GalleryScreen extends React.Component {
       <View
         style={{
           flex: 1,
+          backgroundColor: '#8fbc8f',
       }}>
-        <View
-          style={{
-            flex: 0.5,
-            backgroundColor: 'transparent',
-            flexDirection: 'row',
-        }}>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={this.back}>
-            <Text>Retake Picture</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={this.end}>
-            <Text>To End Screen</Text>
-          </TouchableOpacity>
+        <View style={styles.header}>
+          <Button
+            styles={{button: styles.headerButton, label: styles.labelSmall}}
+            onPress={this.back}
+            label = "Retake Picture"
+          />
+          <Button
+            styles={{button: styles.headerButton, label: styles.labelSmall}}
+            onPress={this.end}
+            label = "To End Screen"
+          />
         </View>
         <View
           style={{
@@ -104,9 +100,29 @@ const styles = StyleSheet.create({
     margin: 5,
     resizeMode: 'contain',
   },
-  backButton: {
+  button: {
     padding: 20,
     marginBottom: 4,
     backgroundColor: 'green',
+    fontFamily: 'serif',
+    fontFamily: 'Verdana',
+    alignSelf: 'center',
   },
+  labelSmall: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    fontFamily: 'serif',
+    fontFamily: 'Verdana',
+    color: '#fff'
+  },
+  headerButton: {
+    backgroundColor: '#34A853',
+    borderWidth: 1,
+    borderRadius: 50,
+    borderColor: '#fff',
+  },
+  header: {
+    marginTop: 25,
+    backgroundColor: '#8fbc8f',
+  }
 });

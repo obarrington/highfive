@@ -115,12 +115,14 @@ export default class ScreenSelection extends Component {
     label: {
       fontSize: 25,
       fontWeight: 'bold',
+      fontFamily: 'serif',
       fontFamily: 'Verdana',
       color: '#fff',
     },
     labelSmall: {
       fontSize: 12,
       fontWeight: 'bold',
+      fontFamily: 'serif',
       fontFamily: 'Verdana',
       color: '#fff'
     },

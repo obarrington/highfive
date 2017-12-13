@@ -4,25 +4,14 @@ import { AppRegistry, Dimensions, View, Alert, Platform, TouchableHighlight,
 import { takeSnapshotAsync } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import Colors from './Colors';
-// if (Platform.OS === 'ios') {
-//   import DrawScreen from './DrawScreen';
-// } else {
-//   import DrawScreen from './DrawScreenAndriod';
-// }
 import DrawScreen from './DrawScreen';
-
-//import Header from './Header';
 import ColorSelector from './ColorSelector';
-//import ResultImages from './ResultImages';
 import Reaction from './Reaction';
 import Slider from 'react-native-slider';
 import Button from './Button';
 
 var foo = 'loading'
 var DEFAULT_VALUE = 4;
-// import React from "react";
-// import Slider from "react-native-slider";
-// import { AppRegistry, StyleSheet, View, Text } from "react-native";
 
 export default class ActualDrawingScreen extends React.Component {
 
@@ -217,25 +206,18 @@ let styles = StyleSheet.create({
     backgroundColor: '#8fbc8f'
   },
   timerStyle: {
-  color: '#FFF',
-  fontWeight: 'bold',
-  fontFamily: 'Verdana',
-  alignSelf: 'center',
-},
+    color: '#FFF',
+    fontWeight: 'bold',
+    fontFamily: 'serif',
+    fontFamily: 'Verdana',
+    alignSelf: 'center',
+  },
   container2: {
     flex: 1,
     marginLeft: 10,
     marginRight: 10,
     alignItems: "stretch",
     justifyContent: "center"
-  },
-
-  footer: {
-    color: '#555',
-    fontSize: 12,
-    position: 'absolute',
-    bottom: 5,
-    right: 10
   },
   headerButton: {
     backgroundColor: '#34A853',
@@ -247,6 +229,7 @@ let styles = StyleSheet.create({
     fontSize: 12,
     color: '#FFF',
     fontWeight: 'bold',
+    fontFamily: 'serif',
     fontFamily: 'Verdana',
   },
   header: {

@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 50,
     fontWeight: 'bold',
+    fontFamily: 'serif',
     fontFamily: 'Verdana',
     color: '#fff',
   },
