@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     fontFamily: 'Verdana',
-    color: '#fff',
+    color: '#fff'
   },
   primaryButton: {
     backgroundColor: 'transparent',

@@ -4,8 +4,10 @@ import { StackNavigator } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
 
-const settings = require('./settingSettings');
 
+const firebase = require('firebase');
+
+const settings = require('./settingSettings');
 export default class ScreenSelection extends Component {
   constructor(props) {
     super(props);
@@ -57,14 +59,23 @@ export default class ScreenSelection extends Component {
   };
 
   render() {
+    let button = null;
+    if(firebase.auth().currentUser == null){
+      button =   <Button styles={styles.hide}/>;
+      console.log("null!");
+    }
+    else {
+      button =  <Button
+                label="Profile"
+                styles={{button: styles.headerButton, label: styles.labelSmall}}
+                onPress={this.profile}
+              />;
+     console.log(firebase.auth().currentUser);
+    }
     return (
     <View style={{flex: 1}}>
       <View style={styles.headerContainer}>
-        <Button
-          label="Profile"
-          styles={{button: styles.headerButton, label: styles.labelSmall}}
-          onPress={this.profile}
-        />
+        {button}
         <Button
           label="Settings"
           styles={{button: styles.headerButton, label: styles.labelSmall}}
@@ -108,13 +119,13 @@ export default class ScreenSelection extends Component {
     label: {
       fontSize: 50,
       fontWeight: 'bold',
-      //fontFamily: 'Verdana',
+      fontFamily: 'sans-serif',
       color: '#fff',
     },
     labelSmall: {
       fontSize: 12,
       fontWeight: 'bold',
-      //fontFamily: 'Verdana',
+      fontFamily: 'sans-serif',
       color: '#fff'
     },
     primaryButton: {
@@ -132,6 +143,9 @@ export default class ScreenSelection extends Component {
       borderWidth: 1,
       borderRadius: 50,
       borderColor: '#fff',
+    },
+    hide: {
+      opacity: 1,
     },
 
 });

@@ -29,23 +29,9 @@ export default class DigitalTouch extends Component {
       onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
 
       onPanResponderGrant: (evt, gestureState) => {
-        console.log('onTouch');
-        // if (Platform.OS === 'ios') {
-        //   console.log([x, y]);
-        //   let [x, y] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
-        // } else {
-        //   console.log([x, y]);
-        //   let [x, y] = [evt.nativeEvent.locationX + gestureState.dx, evt.nativeEvent.locationY + gestureState.dy];
-        // }
-        // let [x, y] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
-        // let [x, y] = [evt.nativeEvent.locationX + gestureState.dx, evt.nativeEvent.locationY + gestureState.dy];
-        // let [x, y] = [gestureState.moveX, gestureState.moveY];
         this.sendOffset(evt.nativeEvent.pageX-evt.nativeEvent.locationX, evt.nativeEvent.pageY-evt.nativeEvent.locationY);
         let [x, y] = [evt.nativeEvent.pageX, evt.nativeEvent.pageY];
-        console.log([x, y]);
         const newCurrentPoints = this.state.currentPoints;
-        // const newCirclePointX = this.state.circlePointX;
-        // const newCirclePointY = this.state.circlePointX;
         newCurrentPoints.push({ x, y });
 
         this.setState({
@@ -56,26 +42,10 @@ export default class DigitalTouch extends Component {
           circlePointY: y - (evt.nativeEvent.pageY-evt.nativeEvent.locationY),
           currentMax: this.state.currentMax
         });
-        //console.log(this.props.donePaths);
-        // The gesture has started. Show visual feedback so the user knows
-        // what is happening!
-
-        // gestureState.d{x,y} will be set to zero now
-        console.log("Touch");
         return true;
       },
       onPanResponderMove: (evt, gestureState) => {
-        console.log('onMove');
-        //let [x, y] = [evt.nativeEvent.pageX, evt.nativeEvent.pageY];
         let [x, y] = [gestureState.moveX, gestureState.moveY];
-        // let [x, y] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
-        // let [x, y] = [evt.nativeEvent.locationX + gestureState.dx, evt.nativeEvent.locationY + gestureState.dy];
-        // if (Platform.OS === 'ios') {
-        //   let [x, y] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
-        // } else {
-        //   let [x, y] = [evt.nativeEvent.locationX + gestureState.dx, evt.nativeEvent.locationY + gestureState.dy];
-        // }
-        console.log([x, y]);
         const newCurrentPoints = this.state.currentPoints;
         newCurrentPoints.push({ x, y });
 
@@ -90,38 +60,17 @@ export default class DigitalTouch extends Component {
       },
       onPanResponderTerminationRequest: (evt, gestureState) => true,
       onPanResponderRelease: (evt, gestureState) => {
-        console.log("onResponderRelease");
-        console.log(this.props.donePaths);
-        console.log(gestureState.moveX, gestureState.moveY);
-        const newPaths = this.props.donePaths;
-        const newDot = this.props.doneCircle;
-        // let [startX, startY] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
-        // let [startX, startY] = [evt.nativeEvent.locationX + gestureState.dx, evt.nativeEvent.locationY + gestureState.dy];
+        const newDrawing = this.props.donePaths;
         let [startX, startY] = [gestureState.moveX, gestureState.moveY];
-        // if (Platform.OS === 'ios') {
-        //   let [x, y] = [evt.nativeEvent.locationX, evt.nativeEvent.locationY];
-        // } else {
-        //   let [x, y] = [evt.nativeEvent.locationX + gestureState.dx, evt.nativeEvent.locationY + gestureState.dy];
-        // }
         if (this.state.currentPoints.length > 0) {
           var isPoint = true;
-          // const newCirclePointX = this.state.circlePointX;
-          // const newCirclePointY = this.state.circlePointX;
-          //newCirclePoint.push({ startX, startY });
           this.state.currentPoints.forEach((point) => {
             if (startX != point.x || startY != point.y) {
               isPoint = false;
             }
           });
-          // Cache the shape object so that we aren't testing
-          // whether or not it changed; too many components?
           if (isPoint) {
-            console.log("This is a point");
-            console.log(startX);
-            console.log(startY);
-            console.log(this.state.circlePointX);
-            console.log(this.state.circlePointY);
-            newDot.push(
+            newDrawing.push(
               <Circle
                 key={this.state.currentMax}
                 cx={this.state.circlePointX}
@@ -131,7 +80,7 @@ export default class DigitalTouch extends Component {
               />
             )
           } else {
-            newPaths.push(
+            newDrawing.push(
               <Path
                 key={this.state.currentMax}
                 d={this.state.reaction.pointsToSvg(this.state.currentPoints)}
@@ -142,7 +91,7 @@ export default class DigitalTouch extends Component {
             );
           }
 
-          console.log(this.state.reaction.pointsToSvg(this.state.currentPoints));
+
         }
 
         this.state.reaction.addGesture(this.state.currentPoints);
@@ -152,11 +101,10 @@ export default class DigitalTouch extends Component {
           currentMax: this.state.currentMax + 1,
         });
 
-        this.props.setDonePaths(newPaths);
-        this.props.setDonePaths(newDot);  //TODO: Maybe fix
-        //this.props.setDoneCircles(newDot);
-        // The user has released all touches while this view is the
-        // responder. This typically means a gesture has succeeded
+        console.log(newDrawing);
+
+        this.props.setDonePaths(newDrawing);
+
         return true;
       },
       onPanResponderTerminate: (evt, gestureState) => {
@@ -175,12 +123,7 @@ export default class DigitalTouch extends Component {
   sendOffset(xOff, yOff) {
     this.state.reaction.setOffset(xOff, yOff)
   }
-  // _onLayoutContainer = (e) => {
-  //   this.state.reaction.setOffset(e.nativeEvent.layout,this.props.totalOffset);
-  //   //this.state.reaction.setOffset(0);
-  // }
 
-  // onLayout={this._onLayoutContainer}
   render() {
     return (
       <View
@@ -198,7 +141,6 @@ export default class DigitalTouch extends Component {
             height={this.props.height}
           >
             <G>
-              {this.props.donePaths}
               <Path
                 key={this.state.currentMax}
                 d={this.state.reaction.pointsToSvg(this.state.currentPoints)}
@@ -207,7 +149,8 @@ export default class DigitalTouch extends Component {
 
                 fill="none"
               />
-              {this.props.doneCircle}
+              {this.props.donePaths}
+
             </G>
           </Svg>
           {this.props.children}

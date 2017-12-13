@@ -2,7 +2,7 @@
 * Created by JunjiJoo on 2017-10-31.
 */
 import React from 'react';
-import { AppRegistry, StyleSheet, Text, View, TextInput, Alert } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, TextInput, Alert, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
@@ -25,6 +25,8 @@ export default class Write extends React.Component {
   }
 
   nextScreen() {
+
+
     const { navigate } = this.props.navigation;
     navigate('end', {results: 0});
   }
@@ -68,12 +70,17 @@ export default class Write extends React.Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
+        <View style={styles.headerContainer}>
           <Button
             label="View Prompt"
             styles={{button: styles.headerButton, label: styles.labelSmall}}
             onPress={this.viewPrompt}
           />
+            <Button
+              label="Continue"
+              styles={{button: styles.headerButton, label: styles.labelSmall}}
+              onPress={this.nextScreen}
+            />
         </View>
         <View style={styles.timer}>
           <Text style={styles.timerStyle}>{minutes}:{seconds}</Text>
@@ -81,6 +88,7 @@ export default class Write extends React.Component {
         <View style = {styles.containerA}>
           <Text style = {styles.headline}>Writing</Text>
         </View>
+
         <View style = {styles.containerB}>
           <TextInput
             style = {styles.textInput}
@@ -90,15 +98,7 @@ export default class Write extends React.Component {
             multiline= {true}
           />
         </View>
-        <View style={styles.footer}>
-          <Container>
-            <Button
-              label="Continue"
-              styles={{button: styles.headerButton, label: styles.buttonWhiteText}}
-              onPress={this.nextScreen}
-            />
-          </Container>
-        </View>
+
       </View>
     );
   }
@@ -107,17 +107,20 @@ export default class Write extends React.Component {
 const styles = StyleSheet.create({
   timer: {
     marginTop: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   timerStyle: {
     color: '#FFF',
     fontWeight: 'bold',
-    //fontFamily: 'Verdana',
+    fontFamily: 'sans-serif',
+
   },
   container: {
     flex: 1,
     backgroundColor: '#8fbc8f',
-    alignItems: 'center',
-    justifyContent: 'center',
+  //  alignItems: 'center',
+  //  justifyContent: 'center',
   },
   containerA: {
     flex: 1,
@@ -128,8 +131,8 @@ const styles = StyleSheet.create({
   containerB: {
     flex: 3,
     backgroundColor: '#8fbc8f',
-  //  alignItems: 'center',
-  //  justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   textInput: {
     height: 300,
@@ -138,7 +141,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFF',
     fontWeight: 'bold',
-    //fontFamily: 'Verdana',
+    fontFamily: 'sans-serif',
 
   //  alignItems: 'top',
   //  justifyContent: 'top',
@@ -153,7 +156,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFF',
     fontWeight: 'bold',
-    //fontFamily: 'Verdana',
+    fontFamily: 'sans-serif',
   },
   primaryButton: {
     backgroundColor: '#34A853'
@@ -162,8 +165,9 @@ const styles = StyleSheet.create({
     marginTop: 100
   },
   headerContainer: {
+    marginTop: 35,
     flex: 0.35,
-    backgroundColor: '#75c68b',
+    backgroundColor: '#8fbc8f',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
@@ -177,13 +181,13 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 25,
     fontWeight: 'bold',
-    //fontFamily: 'Verdana',
+    fontFamily: 'sans-serif',
     color: '#fff',
   },
   labelSmall: {
     fontSize: 12,
     fontWeight: 'bold',
-    //fontFamily: 'Verdana',
+    fontFamily: 'sans-serif',
     color: '#fff'
   },
 

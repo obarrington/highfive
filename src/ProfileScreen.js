@@ -3,33 +3,53 @@ import { StyleSheet, Text, View} from 'react-native';
 import { StackNavigator, NavigationActions } from 'react-navigation';
 import Container from './Container';
 import Button from './Button';
+//import database from './database';
 
 const database = require('./database');
+const firebase = require('firebase');
 export default class ScreenSelection extends Component {
   constructor(props) {
     super(props);
+    var test = '';
     this.state = {
-      user: database.getUserData(),
-    };
+      user: {},
+    }
+    this.getUserData();
     this.back = this.back.bind(this);
-    this.logout = this.logout.bind(this);
+    this.logOut = this.logOut.bind(this);
 
   }
 
   getUserData() {
     var user = {};
-    user = database.getUser();
+    user = database.getUserData().then(curr => {
+      user = curr;
+      this.setState({
+        user : user
+      });
+      console.log("prof screen", user);
+    });;
+
+
   }  // The user's ID, unique to the Firebase project. Do NOT use
   // this value to authenticate with your backend server, if
   // you have one. Use User.getToken() instead.
 
-
+  logOut(){
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      // An error happened.
+    });
+      const { navigate } = this.props.navigation;
+      navigate('Main');
+  }
   back() {
     const { goBack } = this.props.navigation;
     goBack();
   }
 
-  logout() {
+/*  logout() {
     const resetAction = NavigationActions.reset({
       index: 0,
       actions: [
@@ -37,7 +57,7 @@ export default class ScreenSelection extends Component {
       ]
     })
     this.props.navigation.dispatch(resetAction)
-  }
+  }*/
 
   render() {
     return (
@@ -49,16 +69,17 @@ export default class ScreenSelection extends Component {
           onPress={this.back}
         />
         <Button
-          label="Profile Settings"
+          label="Log Out"
           styles={{button: styles.headerButton, label: styles.labelSmall}}
-          onPress={this.logout}
+          onPress={this.logOut}
         />
       </View>
       <View style={styles.profileContainer}>
-        <Text style={styles.label}>this.state.user.name</Text>
+        <Text style={styles.label}>{this.state.user.email}</Text>
       </View>
       <View style={styles.historyContainer}>
-        <Text style={styles.label}>this.state.user.history</Text>
+        <Text style={styles.label}>Placeholder
+        </Text>
       </View>
     </View>
   );
@@ -94,13 +115,13 @@ export default class ScreenSelection extends Component {
     label: {
       fontSize: 25,
       fontWeight: 'bold',
-      //fontFamily: 'Verdana',
+      fontFamily: 'sans-serif',
       color: '#fff',
     },
     labelSmall: {
       fontSize: 12,
       fontWeight: 'bold',
-      //fontFamily: 'Verdana',
+      fontFamily: 'sans-serif',
       color: '#fff'
     },
 });

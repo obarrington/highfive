@@ -36,9 +36,10 @@ let styles = StyleSheet.create({
   },
 
   option: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
+    //HERE
+    width: 30,
+    height: 30,
+    borderRadius: 15,
     marginVertical: 5,
     marginHorizontal: 10,
     backgroundColor: '#8fbc8f',

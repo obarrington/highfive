@@ -107,21 +107,63 @@ async function getPrompt(type) {
     console.log(error.message);
   }
 }
-var currUser = firebase.auth().currentUser;
 
-
-function getUser() {
-  console.log(currUser.uid);
-  if (currUser != null) {
-    console.log("got user");
-    var user = {
-      name: currUser.displayName,
-      email: currUser.email,
-      uid: currUser.uid,
-    };
-  return ref.child("Users").child(user.uid);
+async function getUser() {
+  try {
+    const user = await genUser();
+    return user;
+  }
+  catch(error){
+    cosole.log(error.message);
   }
 }
+
+function genUser() {
+  return new Promise(
+    (resolve, reject) => {
+
+  var currUser = firebaseApp.auth().currentUser;
+  if (currUser != null) {
+    var userRef = firebaseApp.database().ref("Users");
+    var users = [];
+    var user = {};
+    var key;
+    var childData;
+  userRef.once("value")
+  .then(function(snapshot) {
+  //  THE ISSUE IS HERE
+  console.log("finding user");
+    snapshot.forEach(function(childSnap) {
+      users.push({
+        key : childSnap.key,
+        childData : childSnap.val()
+      });
+    });
+    console.log(users[0].childData.uid,"the user");
+    console.log(currUser.uid, "curr");
+    for(var i = 0; i < users.length; i++){
+      if(firebaseApp.auth().currentUser.uid == users[i].childData.uid){
+
+        user = {
+          email: users[i].childData.email,
+          uid: users[i].childData.uid
+          //history: users[i].childData.history
+        };
+        console.log(user, "in database");
+      //  return user;
+      }
+    }
+    });
+  }
+    waitForIt(900)
+      .then(function () {
+        resolve(user);
+      });
+   }
+  );
+
+}
+
 
 function addDrawing(drawing){
     var user = getUser();
@@ -130,12 +172,15 @@ function addDrawing(drawing){
       new_exercise: drawing,
     });
   }
-function addWriting(writing){
+function addWriting(text){
       var user = getUser();
-      var curr = Object.keys(userData.history.write).length;
-      ref.child("users").child(user.uid).set({
-          new_exercise: writing,
-        });
+      if(user != null){
+      var userRef = firebase.database().ref("Users/History");
+      var size = userRef.length;
+      userRef.push({
+        writing: {text},
+      });
+    }
 }
 
 module.exports = {
@@ -146,13 +191,14 @@ module.exports = {
 
   },
   getUserData: function(){
+    console.log('temp');
     return getUser();
   },
 }
 
 //Authentication
 
-var currUser = firebase.auth().currentUser;
+/*var currUser = firebase.auth().currentUser;
 
 function getUser(){
   if (currUser != null) {
@@ -178,4 +224,4 @@ function addWriting(writing){
       ref.child("users").child(user.uid).set({
           new_exercise: writing,
         });
-}
+}*/
