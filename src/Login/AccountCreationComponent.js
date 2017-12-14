@@ -22,6 +22,11 @@ export default class AccountCreationComponent extends Component {
     navigate('Selection');
   };
 
+  backToLogin = () => {
+    const { navigate } = this.props.navigation;
+    navigate('Main');
+  };
+
 submitNewUser = () => {
   this.setState({loading: true,});
   const{email, password} = this.state;
@@ -84,6 +89,13 @@ renderCurrState(){
             styles={{button: styles.emailUsernameVerification, label: styles.buttonWhiteText}}
             onPress={this.submitNewUser}
         />
+      </Container>
+      <Container>
+          <Button
+              label="Back to Login"
+              styles={{button: styles.emailUsernameVerification, label: styles.buttonWhiteText}}
+              onPress={this.backToLogin}
+          />
       </Container>
     </ScrollView>
   )

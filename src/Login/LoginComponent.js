@@ -26,7 +26,7 @@ export default class LoginComponent extends Component {
       navigate('Creation');
   };
 
-  navigateToNextScreen() {
+  navigateToNextScreen = () => {
     const { navigate } = this.props.navigation;
     navigate('Selection');
   };
@@ -117,7 +117,7 @@ export default class LoginComponent extends Component {
           <Button
                 label="Continue As Guest"
                 styles={{button: styles.guestVerification, label: styles.buttonWhiteText}}
-                onPress={this.props.onLoginAsGuest}
+                onPress={this.navigateToNextScreen}
           />
         </Container>
         </View>
